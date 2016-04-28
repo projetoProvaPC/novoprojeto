@@ -7,16 +7,28 @@ package Class;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
 
 /**
  *
  * @author Thais
  */
+@Entity
+@Table
 public class Questao {
-    private String enunciado;
-    private double pontuaçao;
-    private int tamanhoEspaço;
     
+    @Id
+    @GeneratedValue
+    private long id;
+    @Column
+    private String enunciado;
+    @Column
+    private double pontuaçao;
+    @Column
+    private int tamanhoDoEspaço;
+    
+    @OneToMany(targetEntity = Alternativa.class)
     List<Alternativa> Alternativa= new ArrayList<>();
+    
 }
             

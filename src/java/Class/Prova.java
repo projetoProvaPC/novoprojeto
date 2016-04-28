@@ -7,12 +7,30 @@ package Class;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
 
 /**
  *
  * @author Thais
  */
+
+@Entity
+@Table
+
 public class Prova {
+    @GeneratedValue
+    @Id
+    private Long id;
     
-    List<Questao> Questao = new ArrayList<>();
+
+    @OneToMany (targetEntity = Questao.class)
+    List<Questao> questoes = new ArrayList<>();
+
+    public Long getID() {
+        return id;
+    }
+
+    public void setID(Long ID) {
+        this.id = ID;
+    }
 }
