@@ -21,11 +21,10 @@ public class Prova {
     @GeneratedValue
     @Id
     private Long id;
-    
-
+  /*
     @OneToMany (targetEntity = Questao.class)
     List<Questao> questoes = new ArrayList<>();
-
+*/
     public Long getID() {
         return id;
     }
