@@ -38,7 +38,30 @@ public class Alternativa {
         hash = 61 * hash + (this.veracidade ? 1 : 0);
         return hash;
     }
+       
+    public String getTexto() {
+        return texto;
+    }
 
+    public boolean isVeracidade() {
+        return veracidade;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public void setVeracidade(boolean veracidade) {
+        this.veracidade = veracidade;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -68,28 +91,5 @@ public class Alternativa {
         return "Alternativa{" + "id=" + id + ", texto=" + texto + ", veracidade=" + veracidade + '}';
     }
     
-    
-    public String getTexto() {
-        return texto;
-    }
-
-    public boolean isVeracidade() {
-        return veracidade;
-    }
-
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
-
-    public void setVeracidade(boolean veracidade) {
-        this.veracidade = veracidade;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+ 
 }

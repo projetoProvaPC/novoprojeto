@@ -34,16 +34,50 @@ public class Questao {
     
     @OneToMany
     List<Alternativa> Alternativa= new ArrayList<>();
-
+    
+     
     public long getId() {
         return id;
     }
+    
 
     public void setId(long id) {
         this.id = id;
     }
 
     public Questao() {
+    }
+
+    public String getEnunciado() {
+        return enunciado;
+    }
+
+    public double getPontuaçao() {
+        return pontuaçao;
+    }
+
+    public int getTamanhoEspaço() {
+        return tamanhoEspaço;
+    }
+
+    public List<Alternativa> getAlternativa() {
+        return Alternativa;
+    }
+
+    public void setEnunciado(String enunciado) {
+        this.enunciado = enunciado;
+    }
+
+    public void setPontuaçao(double pontuaçao) {
+        this.pontuaçao = pontuaçao;
+    }
+
+    public void setTamanhoEspaço(int tamanhoEspaço) {
+        this.tamanhoEspaço = tamanhoEspaço;
+    }
+
+    public void setAlternativa(List<Alternativa> Alternativa) {
+        this.Alternativa = Alternativa;
     }
 
     @Override
@@ -85,6 +119,11 @@ public class Questao {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", pontua\u00e7ao=" + pontuaçao + ", tamanhoEspa\u00e7o=" + tamanhoEspaço + ", Alternativa=" + Alternativa + '}';
     }
     
     

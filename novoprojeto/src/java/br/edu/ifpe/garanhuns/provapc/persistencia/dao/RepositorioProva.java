@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author lucas
+ * @author Thais
  */
 public class RepositorioProva {
     

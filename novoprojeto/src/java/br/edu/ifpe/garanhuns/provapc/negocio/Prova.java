@@ -11,6 +11,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +25,7 @@ public class Prova {
     @GeneratedValue
     long id;
     
+    @OneToMany
     List<Questao> Questao = new ArrayList<>();
 
     public long getId() {
@@ -37,6 +39,14 @@ public class Prova {
     public Prova() {
     }
 
+    public List<Questao> getQuestao() {
+        return Questao;
+    }
+
+    public void setQuestao(List<Questao> Questao) {
+        this.Questao = Questao;
+    }
+   
     @Override
     public int hashCode() {
         int hash = 3;
@@ -65,6 +75,12 @@ public class Prova {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Prova{" + "id=" + id + ", Questao=" + Questao + '}';
+    }
+    
     
     
 }
