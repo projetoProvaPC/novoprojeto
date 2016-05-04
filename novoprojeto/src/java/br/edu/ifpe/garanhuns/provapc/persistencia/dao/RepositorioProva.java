@@ -29,11 +29,8 @@ public class RepositorioProva {
     public Prova recupearar(long id){
         return (Prova) dao.recover("from Prova where id="+id).get(0);
     }
-    public List<Prova> recuperar() {
-        List<Prova> resultado = new LinkedList<>();
-        dao.recover("from Prova").stream().forEach((p) -> {
-            resultado.add((Prova) p);
-        });
-        return resultado;
+      public List<Prova> recuperarTodos(){
+        return DaoManagerHiber.getInstance().recover("from Prova");
+
     }
 }
