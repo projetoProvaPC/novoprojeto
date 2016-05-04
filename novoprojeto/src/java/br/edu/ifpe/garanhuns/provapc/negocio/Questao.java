@@ -7,6 +7,7 @@ package br.edu.ifpe.garanhuns.provapc.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,6 +42,51 @@ public class Questao {
     public void setId(long id) {
         this.id = id;
     }
+
+    public Questao() {
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.enunciado);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.pontuaçao) ^ (Double.doubleToLongBits(this.pontuaçao) >>> 32));
+        hash = 97 * hash + this.tamanhoEspaço;
+        hash = 97 * hash + Objects.hashCode(this.Alternativa);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Questao other = (Questao) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.pontuaçao) != Double.doubleToLongBits(other.pontuaçao)) {
+            return false;
+        }
+        if (this.tamanhoEspaço != other.tamanhoEspaço) {
+            return false;
+        }
+        if (!Objects.equals(this.enunciado, other.enunciado)) {
+            return false;
+        }
+        if (!Objects.equals(this.Alternativa, other.Alternativa)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }
