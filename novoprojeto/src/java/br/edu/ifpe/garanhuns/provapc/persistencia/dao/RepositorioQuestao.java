@@ -27,7 +27,7 @@ public class RepositorioQuestao {
     public Questao recupearar(long id){
         return (Questao) dao.recover("from Questao where id="+id).get(0);
     }
-      public List recuperarTodos(){
+      public List<Questao> recuperarTodos(){
         return DaoManagerHiber.getInstance().recover("from Questao");
 
     }

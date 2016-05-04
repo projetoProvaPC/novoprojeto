@@ -29,7 +29,7 @@ public class RepositorioProva {
     public Prova recupearar(long id){
         return (Prova) dao.recover("from Prova where id="+id).get(0);
     }
-      public List recuperarTodos(){
+      public List<Prova> recuperarTodos(){
         return DaoManagerHiber.getInstance().recover("from Prova");
 
     }
