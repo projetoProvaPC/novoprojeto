@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,64 @@ public class Alternativa {
     private String texto;
     @Column
     private boolean veracidade;
+    
+    public Alternativa(){
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 61 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 61 * hash + Objects.hashCode(this.texto);
+        hash = 61 * hash + (this.veracidade ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Alternativa other = (Alternativa) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.veracidade != other.veracidade) {
+            return false;
+        }
+        if (!Objects.equals(this.texto, other.texto)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Alternativa{" + "id=" + id + ", texto=" + texto + ", veracidade=" + veracidade + '}';
+    }
+    
+    
+    public String getTexto() {
+        return texto;
+    }
+
+    public boolean isVeracidade() {
+        return veracidade;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public void setVeracidade(boolean veracidade) {
+        this.veracidade = veracidade;
+    }
 
     public long getId() {
         return id;
@@ -33,5 +92,4 @@ public class Alternativa {
     public void setId(long id) {
         this.id = id;
     }
-    
 }
