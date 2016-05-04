@@ -9,6 +9,7 @@
     <property name="hibernate.connection.password">senhappp</property>
     
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Prova"/>
-     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Questao"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Questao"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Alternativa"/>
   </session-factory>
 </hibernate-configuration>

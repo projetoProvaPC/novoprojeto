@@ -16,6 +16,9 @@ public class Main {
     public static void main(String[] args) {
         RepositorioProva repositorio = new RepositorioProva();
         Prova p = new Prova();
+        Prova c = new Prova();
         repositorio.adicionar(p);
+        repositorio.adicionar(c);
+        
     }
 }
