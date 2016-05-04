@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.provapc.persistencia.dao;
+package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import java.util.List;
 
 /**
