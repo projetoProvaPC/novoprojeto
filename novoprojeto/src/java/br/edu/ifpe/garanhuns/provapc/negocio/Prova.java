@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.provapc.negocio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +25,8 @@ public class Prova {
     @Id
     @GeneratedValue
     long id;
+    @Column
+    private String titulo;
     
     @OneToMany
     List<Questao> Questao = new ArrayList<>();
@@ -39,6 +42,11 @@ public class Prova {
     public Prova() {
     }
 
+    public Prova(long id, String titulo) {
+        this.id = id;
+        this.titulo = titulo;
+    }
+    
     public List<Questao> getQuestao() {
         return Questao;
     }
@@ -46,12 +54,21 @@ public class Prova {
     public void setQuestao(List<Questao> Questao) {
         this.Questao = Questao;
     }
-   
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.Questao);
+        int hash = 5;
+        hash = 71 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.titulo);
+        hash = 71 * hash + Objects.hashCode(this.Questao);
         return hash;
     }
 
@@ -70,6 +87,9 @@ public class Prova {
         if (this.id != other.id) {
             return false;
         }
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
         if (!Objects.equals(this.Questao, other.Questao)) {
             return false;
         }
@@ -78,9 +98,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return "Prova{" + "id=" + id + ", Questao=" + Questao + '}';
+        return "Prova{" + "id=" + id + ", titulo=" + titulo + ", Questao=" + Questao + '}';
     }
-    
-    
-    
+   
 }

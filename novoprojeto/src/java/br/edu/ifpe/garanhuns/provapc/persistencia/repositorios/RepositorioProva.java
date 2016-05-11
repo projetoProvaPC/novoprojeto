@@ -10,10 +10,12 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  *
  * @author Thais
  */
+
 public class RepositorioProva {
     
     private final DaoManagerHiber dao = DaoManagerHiber.getInstance();
@@ -27,8 +29,12 @@ public class RepositorioProva {
     public void  alterar(Prova p) {
         dao.update(p);
     }
+    public boolean existe(long id) {
+        Prova p = (Prova) dao.recover("from Prova where id=:param", id).get(0);
+        return p!=null;
+    }
     public Prova recupearar(long id){
-        return (Prova) dao.recover("from Prova where id="+id).get(0);
+        return (Prova) dao.recover("from Prova where id=:param",id).get(0);
     }
       public List<Prova> recuperarTodos(){
         return DaoManagerHiber.getInstance().recover("from Prova");

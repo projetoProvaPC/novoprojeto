@@ -110,6 +110,22 @@ public class DaoManagerHiber {
         return q.list();
     }
     
+    public List recover( String hql, long param) {
+        Transaction tr = null;
+        try {
+            tr = s.beginTransaction();
+        } catch (org.hibernate.exception.JDBCConnectionException ex) {
+            s.close();
+            s = sessionFactory.openSession();
+            tr = s.beginTransaction();
+        }
+        Query q = s.createQuery(hql);
+        q.setLong(hql, param);
+        tr.commit();
+        s.flush();
+        return q.list();
+    }
+    
     public List recoverSQL(String sql){
         Transaction tr = null;
         try{
