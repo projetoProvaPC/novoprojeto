@@ -13,9 +13,10 @@
                     <h:outputText value="id"/>
                     <p:inputText value="#{ProvaBuilder.id}"/>
                     <h:outputText value="Título"/>
-                    <p:inputText value="#{ProvaBuilder.titulo}"
-                    <p:commandButton value="Cadastrar" action="#{ControladorProva.adicionar(ProvaBuilder.construir())}"/>
-                </p:panelGrid>
+                    <p:inputText value="#{ProvaBuilder.titulo}"/>
+                    <p:commandButton value="Cadastrar" action="#{ControladorProva.adicionar(ProvaBuilder.construir())}">
+                    </p:commandButton>
+                            </p:panelGrid>
                 
             </p:fieldset>
             
