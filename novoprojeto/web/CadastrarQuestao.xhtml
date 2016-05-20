@@ -11,12 +11,12 @@
             <p:fieldset legend="Cadastrar Questão">
                 <p:panelGrid columns="2">
                     <h:outputText value="Enunciado"/>
-                    <p:inputText value="#{QuestaoBuilder.enunciado}"/>
+                    <p:inputText value="#{questaoBuilder.enunciado}"/>
                     <h:outputText value="Pontuaçao"/>
-                    <p:inputText value="#{QuestaoBuilder.pontuacao}"/>
+                    <p:inputText value="#{questaoBuilder.pontuacao}"/>
                     <h:outputText value="Tamanho"/>
-                    <p:inputText value="#{QuestaoBuilder.tamanhoEspaco}"/>
-                    <p:commandButton value="Cadastrar" action="#{ControladorQuestao.adicionar(QuestãoBuilder.construir())}"/>
+                    <p:inputText value="#{questaoBuilder.tamanhoEspaco}"/>
+                    <p:commandButton value="Cadastrar" action="#{controladorQuestao.adicionar(questãoBuilder.construir())}"/>
                 </p:panelGrid>
                 
             </p:fieldset>

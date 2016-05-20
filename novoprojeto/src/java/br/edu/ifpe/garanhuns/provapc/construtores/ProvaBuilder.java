@@ -18,13 +18,13 @@ import javax.faces.bean.ManagedProperty;
  *
  * @author Thais
  */
-@ManagedBean(name="ProvaBuilder")
+@ManagedBean(name="provaBuilder")
 @RequestScoped
 public class ProvaBuilder {
     
     private long id;
     private String titulo;
-    @ManagedProperty (value = "#{ControladorProva}")
+    @ManagedProperty (value = "#{controladorProva}")
     private ControladorProva controlador;
     private boolean alterando = false;
     

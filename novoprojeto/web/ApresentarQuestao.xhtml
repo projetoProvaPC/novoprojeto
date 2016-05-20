@@ -8,21 +8,21 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{ControladorQuestao.recuperarTodos()}" var="Questao">
+            <p:dataTable value="#{controladorQuestao.recuperarTodos()}" var="questao">
                 <p:column headerText="id">
-                    <h:outputText value="#{Questao.id()}"/>
+                    <h:outputText value="#{questao.id()}"/>
                 </p:column>
                 <p:column headerText="Alternativa">
-                    <h:outputText value="#{Questao.alternativa}"/>
+                    <h:outputText value="#{questao.alternativa}"/>
                 </p:column>
                 <p:column headerText="Enunciado">
-                    <h:outputText value="#{Questao.enunciado()}"/>
+                    <h:outputText value="#{questao.enunciado()}"/>
                 </p:column>
                 <p:column headerText="Pontuacao">
-                    <h:outputText value="#{Questao.pontuacao}"/>
+                    <h:outputText value="#{questao.pontuacao}"/>
                 </p:column>
                 <p:column headerText="Espaco">
-                    <h:outputText value="#{Questao.tamanhoEspaco}"/>
+                    <h:outputText value="#{questao.tamanhoEspaco}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

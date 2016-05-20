@@ -5,31 +5,31 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title></title>
     </h:head>
     <h:body>
         <h:form id="FormProva">
             <p:dataTable id="table"
-                         var="Prova"
-                         value="#{ControladorProva.recuperarTodos()}"
+                         var="prova"
+                         value="#{controladorProva.recuperarTodos()}"
                          
                          selectionMode="single"
-                         selection="#{ControladorProva.selected}"
-                         rowKey="#{Prova.id}">
+                         selection="#{controladorProva.selected}"
+                         rowKey="#{prova.id}">
                 <f:facet name="header">
                     <h:outputText value="Apresenta Provas"/>
                 </f:facet>
                 <p:column headerText="id">
-                    <h:outputText value="#{Prova.id}"/>
+                    <h:outputText value="#{prova.id}"/>
                 </p:column>
                 <p:column headerText="título">
-                    <h:outputText value="#{Prova.titulo}"/>
+                    <h:outputText value="#{prova.titulo}"/>
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton value="Adicionar" action="CadastrarProva.xhtml"/>
                     <p:commandButton value="Atualizar" oncomplete=":FromProva:table"/>
-                    <p:commandButton value="Remover" oncomplete=":FromProva:table" action="#{ControladorProva.remover()}"/>
-                    <p:commandButton value="Alterar" action="#{ControladorProva.alterar()}"/>
+                    <p:commandButton value="Remover" oncomplete=":FromProva:table" action="#{controladorProva.remover()}"/>
+                    <p:commandButton value="Alterar" action="#{controladorProva.alterar()}"/>
                 </f:facet>
             </p:dataTable>
         </h:form>

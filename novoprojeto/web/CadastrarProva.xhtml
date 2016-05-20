@@ -11,10 +11,10 @@
             <p:fieldset legend="Cadastrar Prova">
                 <p:panelGrid columns="2">
                     <h:outputText value="id"/>
-                    <p:inputText value="#{ProvaBuilder.id}"/>
+                    <p:inputText value="#{provaBuilder.id}"/>
                     <h:outputText value="Título"/>
-                    <p:inputText value="#{ProvaBuilder.titulo}"/>
-                    <p:commandButton value="Cadastrar" action="#{ControladorProva.adicionar(ProvaBuilder.construir())}">
+                    <p:inputText value="#{provaBuilder.titulo}"/>
+                    <p:commandButton value="Cadastrar" action="#{controladorProva.adicionar(provaBuilder.construir())}">
                     </p:commandButton>
                             </p:panelGrid>
                 

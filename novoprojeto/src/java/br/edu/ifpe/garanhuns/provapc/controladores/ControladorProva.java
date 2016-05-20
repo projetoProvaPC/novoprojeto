@@ -15,13 +15,15 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Thais
  */
-@ManagedBean(name="ControladorProva")
+@ManagedBean(name="controladorProva")
 @SessionScoped
 public class ControladorProva {
     private Prova alterando = null;
     private Prova selected = null;
     private RepositorioProva repositorio = new RepositorioProva();
 
+    public ControladorProva() {
+    }
     public void remover() {
         remover(selected);
     }

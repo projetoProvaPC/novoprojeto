@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedProperty;
  *
  * @author Lucinaldo Melquíades Jr.
  */
-@ManagedBean(name="QuestaoBuilder")
+@ManagedBean(name="questaoBuilder")
 @RequestScoped
 public class QuestaoBuilder {
     

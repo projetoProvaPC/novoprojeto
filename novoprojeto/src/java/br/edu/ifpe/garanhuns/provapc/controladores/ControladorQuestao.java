@@ -15,11 +15,15 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Lucinaldo Melquíades Jr.
  */
-@ManagedBean(name="ControladorQuestao")
+@ManagedBean(name="controladorQuestao")
 @SessionScoped
 public class ControladorQuestao {
     private RepositorioQuestao repositorio = new RepositorioQuestao();
 
+    public ControladorQuestao() {
+    }
+
+    
     public void adicionar(Questao q) {
         repositorio.adicionar(q);
     }
