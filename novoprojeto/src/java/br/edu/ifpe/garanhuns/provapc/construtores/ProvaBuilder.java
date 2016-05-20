@@ -13,22 +13,26 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Thais
  */
-@ManagedBean(name="provaBuilder")
+@ManagedBean
 @RequestScoped
 public class ProvaBuilder {
     
     private long id;
     private String titulo;
-    @ManagedProperty (value = "#{controladorProva}")
+    
     private ControladorProva controlador;
     private boolean alterando = false;
     
     public ProvaBuilder() {
+        controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
+                getAttribute("controladorProva");
         Prova p = controlador.getAlterando();
         if(p!=null) {
             this.id = p.getId();

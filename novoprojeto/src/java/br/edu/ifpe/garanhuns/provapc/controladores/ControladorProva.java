@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Thais
  */
-@ManagedBean(name="controladorProva")
+@ManagedBean
 @SessionScoped
 public class ControladorProva {
     private Prova alterando = null;
