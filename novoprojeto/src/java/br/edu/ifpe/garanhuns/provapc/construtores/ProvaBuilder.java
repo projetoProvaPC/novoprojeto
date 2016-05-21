@@ -26,13 +26,14 @@ public class ProvaBuilder {
     
     private long id;
     private String titulo;
-    
-    private ControladorProva controlador;
+    //@ManagedProperty (value="#{controladorProva}")
+    FacesContext faces = FacesContext.getCurrentInstance();
+    private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
     
     public ProvaBuilder() {
-        controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
-                getAttribute("controladorProva");
+      //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
+                //getAttribute("controladorProva");
         Prova p = controlador.getAlterando();
         if(p!=null) {
             this.id = p.getId();
@@ -40,7 +41,7 @@ public class ProvaBuilder {
             this.alterando = true;
         }
     }
-
+    
     public String getTitulo() {
         return titulo;
     }
@@ -56,6 +57,23 @@ public class ProvaBuilder {
     public void setId(long id) {
         this.id = id;
     }
+
+    public ControladorProva getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorProva controlador) {
+        this.controlador = controlador;
+    }
+
+    public boolean isAlterando() {
+        return alterando;
+    }
+
+    public void setAlterando(boolean alterando) {
+        this.alterando = alterando;
+    }
+    
     
     public Prova construir(){
         return new Prova(id,titulo);
