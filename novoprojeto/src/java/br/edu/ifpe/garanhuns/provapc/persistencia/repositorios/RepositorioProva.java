@@ -9,6 +9,7 @@ import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import java.util.LinkedList;
 import java.util.List;
+import org.hibernate.Hibernate;
 
 
 /**
@@ -30,7 +31,7 @@ public class RepositorioProva {
         dao.update(p);
     }
     public boolean existe(long id) {
-        Prova p = (Prova) dao.recover("from Prova where id=:param", id).get(0);
+        Prova p = (Prova) dao.recover("from Prova where id = :param", id).get(0);
         return p!=null;
     }
     public Prova recupearar(long id){
