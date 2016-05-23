@@ -53,99 +53,76 @@ public class DaoManagerHiber {
     }
   
     public void persist(Object o){
-        
         Transaction tr = null;
-        try{
-           
-            //s = sessionFactory.getCurrentSession();
-            tr = s.beginTransaction();  
-        }catch(org.hibernate.exception.JDBCConnectionException ex){
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();  
-        }
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
+        
         
         s.save(o);
         
         tr.commit();
         
         s.flush();
+        s.close(); 
     }
     
     public List recover(String hql){
         Transaction tr = null;
-        try{
-           
-            //s = sessionFactory.getCurrentSession();
-            tr = s.beginTransaction();  
-        }catch(org.hibernate.exception.JDBCConnectionException ex){
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();  
-        }
-         
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
         
         Query query = s.createQuery(hql);
         
         tr.commit();
         
         s.flush();
-        
-        return query.list();
+        List l = query.list();
+        s.close();
+        return l;
     }
     
+    //  "from Pessoa where nome=:param","joao"
     public List recover( String hql, String param) {
-        Transaction tr = null;
-        try {
-            tr = s.beginTransaction();
-        } catch (org.hibernate.exception.JDBCConnectionException ex) {
-            s.close();
-            s = sessionFactory.openSession();
-            tr = s.beginTransaction();
-        }
+         Transaction tr = null;
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
+        
         Query q = s.createQuery(hql);
         q.setParameter("param",param);
         tr.commit();
         s.flush();
-        return q.list();
+         List l = q.list();
+        s.close();
+        return l;
     }
     
     public List recover( String hql, long param) {
         Transaction tr = null;
-        try {
-            tr = s.beginTransaction();
-        } catch (org.hibernate.exception.JDBCConnectionException ex) {
-            s.close();
-            s = sessionFactory.openSession();
-            tr = s.beginTransaction();
-        }
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
+        
         Query q = s.createQuery(hql);
         q.setLong(hql, param);
         tr.commit();
         s.flush();
-        return q.list();
+         List l = q.list();
+        s.close();
+        return l;
     }
     
     public List recoverSQL(String sql){
         Transaction tr = null;
-        try{
-           
-            //s = sessionFactory.getCurrentSession();
-            tr = s.beginTransaction();  
-        }catch(org.hibernate.exception.JDBCConnectionException ex){
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();  
-        }
-         
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
         
         Query query = s.createSQLQuery(sql);
         
         tr.commit();
         
         s.flush();
-        
-        return query.list();
+         List l = query.list();
+        s.close();
+        return l;
     }
     
     public List recover(Object o){
@@ -156,21 +133,17 @@ public class DaoManagerHiber {
         
         List l = c.list();
         s.flush();
-        
+        s.close();
         return l;
     }
     
     public void update(Object o){
         Transaction tr = null;
-        try{
-           
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
+     
             //s = sessionFactory.getCurrentSession();
-            tr = s.beginTransaction();  
-        }catch(org.hibernate.exception.JDBCConnectionException ex){
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();  
-        }
+          
          
         
         s.merge(o);
@@ -178,26 +151,20 @@ public class DaoManagerHiber {
         tr.commit();
         
         s.flush();
+        s.close();
     }
     
     public void delete(Object o){
-        Transaction tr = null;
-        try{
-            s.clear();
-            //s = sessionFactory.getCurrentSession();
-            tr = s.beginTransaction();
-        }catch(Exception ex){
-            s.close();
-            s=sessionFactory.openSession();
-            tr = s.beginTransaction();
-        }
-        
+       Transaction tr = null;
+        s=sessionFactory.openSession();
+        tr = s.beginTransaction();
         
         s.delete(o);
         
         tr.commit();
         
         s.flush();
+        s.close();
     }
     
     public static void main(String args[]){
