@@ -13,15 +13,15 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{ControladorAlternativa.recuperarTodos()}" var="Questao">
+            <p:dataTable value="#{controladorAlternativa.recuperarTodos()}" var="Questao">
                 <p:column headerText="id">
-                    <h:outputText value="#{Alternativa.id()}"/>
+                    <h:outputText value="#{alternativa.id()}"/>
                 </p:column>
                 <p:column headerText="Texto">
-                    <h:outputText value="#{Alternativa.texto()}"/>
+                    <h:outputText value="#{alternativa.texto()}"/>
                 </p:column>
                 <p:column headerText="Veracidade">
-                    <h:outputText value="#{Alternativa.veracidade}"/>
+                    <h:outputText value="#{alternativa.veracidade}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

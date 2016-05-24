@@ -7,14 +7,9 @@ package br.edu.ifpe.garanhuns.provapc.construtores;
 
 import br.edu.ifpe.garanhuns.provapc.controladores.ControladorProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
-import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 /**
  *

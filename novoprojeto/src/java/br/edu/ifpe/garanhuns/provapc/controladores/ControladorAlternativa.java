@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author 20131E12GR0178
  */
-@ManagedBean(name="ControladorAlternativa")
+@ManagedBean
 @SessionScoped
 public class ControladorAlternativa {
    private RepositorioAlternativa repositorio = new RepositorioAlternativa();

@@ -16,12 +16,12 @@ and open the template in the editor.
             <p:fieldset legend="Cadastrar Alternativa">
                 <p:panelGrid columns="2">
                     <h:outputText value="id"/>
-                    <p:inputText value="#{AlternativaBuilder.id}"/>
+                    <p:inputText value="#{alternativaBuilder.id}"/>
                     <h:outputText value="Texto"/>
-                    <p:inputText value="#{AlternativaBuilder.texto}"/>
+                    <p:inputText value="#{alternativaBuilder.texto}"/>
                     <h:outputText value="Veracidade"/>
-                    <p:inputText value="#{AlternativaBuilder.veracidade}"/>
-                    <p:commandButton value="Cadastrar" action="#{ControladorAlternativa.adicionar(AlternativaBuilder.construir())}"/>
+                    <p:inputText value="#{alternativaBuilder.veracidade}"/>
+                    <p:commandButton value="Cadastrar" action="#{controladorAlternativa.adicionar(alternativaBuilder.construir())}"/>
                 </p:panelGrid>
                 
             </p:fieldset>

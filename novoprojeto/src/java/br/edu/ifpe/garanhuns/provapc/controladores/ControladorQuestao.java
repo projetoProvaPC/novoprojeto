@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Lucinaldo Melquíades Jr.
  */
-@ManagedBean(name="controladorQuestao")
+@ManagedBean
 @SessionScoped
 public class ControladorQuestao {
     private RepositorioQuestao repositorio = new RepositorioQuestao();

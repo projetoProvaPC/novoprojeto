@@ -4,11 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.provapc.construtores;
-
-import br.edu.ifpe.garanhuns.provapc.controladores.ControladorAlternativa;
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
-import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
-import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,7 +14,7 @@ import javax.faces.bean.ManagedProperty;
  *
  * @author João Witor
  */
-@ManagedBean(name="AlternativaBuilder")
+@ManagedBean
 @RequestScoped
 public class AlternativaBuilder {
      private long id;

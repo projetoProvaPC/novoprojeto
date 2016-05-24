@@ -53,65 +53,99 @@ public class DaoManagerHiber {
     }
   
     public void persist(Object o){
-        Transaction tr = null;
+       Transaction tr = null;
+        try{
         s=sessionFactory.openSession();
-        tr = s.beginTransaction();
-        
-        
-        s.save(o);
-        
+        tr = s.beginTransaction();    
+        s.save(o);     
         tr.commit();
-        
         s.flush();
-        s.close(); 
+       }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close();   
+        } 
     }
     
     public List recover(String hql){
         Transaction tr = null;
+        List l=null;
+        try{
         s=sessionFactory.openSession();
-        tr = s.beginTransaction();
-        
+        tr = s.beginTransaction();  
         Query query = s.createQuery(hql);
-        
         tr.commit();
-        
         s.flush();
-        List l = query.list();
-        s.close();
-        return l;
+        l = query.list();
+        
+        }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+           return l;
+        } 
     }
     
     //  "from Pessoa where nome=:param","joao"
     public List recover( String hql, String param) {
          Transaction tr = null;
+         List l=null;
+        try{
         s=sessionFactory.openSession();
         tr = s.beginTransaction();
-        
         Query q = s.createQuery(hql);
         q.setParameter("param",param);
         tr.commit();
         s.flush();
-         List l = q.list();
-        s.close();
-        return l;
+        l = q.list();
+        }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+           return l;
+        } 
     }
     
     public List recover( String hql, long param) {
         Transaction tr = null;
-        s=sessionFactory.openSession();
-        tr = s.beginTransaction();
+        List l = null;
+        try{
+            s=sessionFactory.openSession();
+             tr = s.beginTransaction();
         
         Query q = s.createQuery(hql);
         q.setLong(hql, param);
         tr.commit();
         s.flush();
-         List l = q.list();
-        s.close();
-        return l;
+        l = q.list();
+        }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+           return l;
+        }        
     }
     
     public List recoverSQL(String sql){
         Transaction tr = null;
+        List l=null;
+        try{
         s=sessionFactory.openSession();
         tr = s.beginTransaction();
         
@@ -120,42 +154,42 @@ public class DaoManagerHiber {
         tr.commit();
         
         s.flush();
-         List l = query.list();
-        s.close();
-        return l;
-    }
-    
-    public List recover(Object o){
-        
-        Criteria c = s.createCriteria(o.getClass());
-        
-        c.add(Example.create(o).enableLike(MatchMode.ANYWHERE).ignoreCase().excludeProperty("codigo"));
-        
-        List l = c.list();
-        s.flush();
-        s.close();
-        return l;
+        l = query.list();
+        }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+           return l;
+        } 
     }
     
     public void update(Object o){
         Transaction tr = null;
+        try{
         s=sessionFactory.openSession();
         tr = s.beginTransaction();
-     
-            //s = sessionFactory.getCurrentSession();
-          
-         
-        
         s.merge(o);
-        
         tr.commit();
-        
         s.flush();
-        s.close();
+        }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+           
+        } 
     }
     
     public void delete(Object o){
        Transaction tr = null;
+       try{
         s=sessionFactory.openSession();
         tr = s.beginTransaction();
         
@@ -164,7 +198,15 @@ public class DaoManagerHiber {
         tr.commit();
         
         s.flush();
-        s.close();
+       }catch(RuntimeException e){
+           if(tr!=null){
+               tr.rollback();
+           }
+           e.printStackTrace();
+       }
+        finally{
+           s.close(); 
+        } 
     }
     
     public static void main(String args[]){
