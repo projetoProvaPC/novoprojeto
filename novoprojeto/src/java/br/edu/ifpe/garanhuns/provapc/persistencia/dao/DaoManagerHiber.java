@@ -51,7 +51,7 @@ public class DaoManagerHiber {
             s.flush();
         } catch (RuntimeException e) {
             if (tr != null) tr.rollback();
-            e.printStackTrace();
+            throw e;
         } finally {
             s.close();
         }
@@ -70,54 +70,31 @@ public class DaoManagerHiber {
             return l;
         } catch (RuntimeException e) {
             if (tr != null) tr.rollback();
-            e.printStackTrace();
+            throw e;
         } finally {
             s.close();
         }
-        return null;
     }
 
-    //  "from Pessoa where nome=:param","joao"
-    public List recover(String hql, String param) {
+    
+    public List recover(String hql, long id) {
         Transaction tr = null;
         List l = null;
         try {
             s = sessionFactory.openSession();
             tr = s.beginTransaction();
             Query q = s.createQuery(hql);
-            q.setParameter("param", param);
+            q.setLong("id", id);
             tr.commit();
             s.flush();
             l = q.list();
             return l;
         } catch (RuntimeException e) {
             if (tr != null) tr.rollback();
-            e.printStackTrace(); // só por enquanto, tem que tratar cada erro
+            throw e;
         } finally {
             s.close();
         }
-        return null;
-    }
-
-    public List recover(String hql, long param) {
-        Transaction tr = null;
-        List l = null;
-        try {
-            s = sessionFactory.openSession();
-            tr = s.beginTransaction();
-            Query q = s.createQuery(hql);
-            q.setLong(hql, param);
-            tr.commit();
-            s.flush();
-            l = q.list();
-            return l;
-        } catch (RuntimeException e) {
-            if (tr != null) tr.rollback();
-            e.printStackTrace();
-        } finally {
-            s.close();
-        }
-        return null;
     }
 
     public List recoverSQL(String sql) {
@@ -135,11 +112,10 @@ public class DaoManagerHiber {
             if (tr != null) {
                 tr.rollback();
             }
-            e.printStackTrace();
+            throw e;
         } finally {
             s.close();
         }
-        return null;
     }
 
     public void update(Object o) {
@@ -154,7 +130,7 @@ public class DaoManagerHiber {
             if (tr != null) {
                 tr.rollback();
             }
-            e.printStackTrace();
+            throw e;
         } finally {
             s.close();
         }
@@ -170,7 +146,7 @@ public class DaoManagerHiber {
             s.flush();
         } catch (RuntimeException e) {
             if (tr != null) tr.rollback();
-            e.printStackTrace();
+            throw e;
         } finally {
             s.close();
         }
