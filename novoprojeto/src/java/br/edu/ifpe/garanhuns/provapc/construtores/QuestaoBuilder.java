@@ -51,4 +51,8 @@ public class QuestaoBuilder {
         this.tamanhoEspaco = tamanhoEspaço;
     }
     
+    public Questao construir() {
+        return new Questao(enunciado,pontuacao,tamanhoEspaco);
+    }
+    
 }
