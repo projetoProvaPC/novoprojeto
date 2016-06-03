@@ -2,13 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Apresentar Questão</title>
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{controladorQuestao.recuperarTodos()}" var="questao">
+            <p:dataTable id="table"
+                         value="#{controladorQuestao.recuperarTodos()}" 
+                         var="questao" 
+                         selectionMode="single"
+                         selection="#{controladorQuestao.selected}"
+                         rowKey="#{questao.id}">
+                <f:facet name="header">
+                    <h:outputText value="Apresentar Questões"/>
+                </f:facet>
                 <p:column headerText="id">
                     <h:outputText value="#{questao.id}"/>
                 </p:column>
@@ -21,8 +30,13 @@
                 <p:column headerText="Espaco">
                     <h:outputText value="#{questao.tamanhoEspaco}"/>
                 </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Adicionar Questão" action="CadastrarQuestao.xhtml"/>
+                    <p:commandButton value="Alterar" action="#{controladorQuestao.alterar()}"/>
+                    <p:commandButton value="Atualizar Página" oncomplete=":FromQuestao:table"/>
+                    <p:commandButton value="Remover" oncomplete=":FromQuestao:table" action="#{controladorQuestao.remover()}"/>
+                </f:facet>
             </p:dataTable>
         </h:form>
     </h:body>
 </html>
-

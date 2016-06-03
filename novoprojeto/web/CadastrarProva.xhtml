@@ -10,8 +10,6 @@
         <h:form id="FormProva">
             <p:fieldset legend="Cadastrar Prova">
                 <p:panelGrid columns="2">
-                    <h:outputText value="id"/>
-                    <p:inputText value="#{provaBuilder.id}"/>
                     <h:outputText value="Título"/>
                     <p:inputText value="#{provaBuilder.titulo}"/>
                     <p:commandButton value="Cadastrar" action="#{controladorProva.adicionar(provaBuilder.construir())}">
@@ -25,4 +23,3 @@
 
     </h:body>
 </html>
-

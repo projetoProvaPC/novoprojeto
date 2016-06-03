@@ -18,22 +18,37 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ControladorQuestao {
+    private Questao alterando = null;
+    private Questao selected = null;
     private RepositorioQuestao repositorio = new RepositorioQuestao();
 
     public ControladorQuestao() {
     }
-
+    public void remover() {
+        remover(selected);
+    }
     
-    public void adicionar(Questao q) {
-        repositorio.adicionar(q);
+    public String adicionar(Questao q) {
+        if(repositorio.existe(q.getId())) {
+            repositorio.alterar(q);
+        } else {
+            repositorio.adicionar(q);
+        }
+        return "ApresentarQuestao.xhtml";
     }
 
     public void remover(Questao q) {
         repositorio.remover(q);
     }
-
+    
     public void alterar(Questao q) {
         repositorio.alterar(q);
+    }
+
+
+    public String alterar() {
+        this.alterando = selected;
+        return "CadastrarQuestao.xhtml";
     }
 
     public Questao recupearar(long id) {
@@ -42,6 +57,22 @@ public class ControladorQuestao {
 
     public List<Questao> recuperarTodos() {
         return repositorio.recuperarTodos();
+    }
+    
+    public Questao getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Questao selected) {
+        this.selected = selected;
+    }
+
+    public Questao getAlterando() {
+        return alterando;
+    }
+
+    public void setAlterando(Questao alterando) {
+        this.alterando = alterando;
     }
    
 }
