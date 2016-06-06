@@ -25,8 +25,11 @@ public class RepositorioQuestao {
     public void  alterar(Questao q) {
         dao.update(q);
     }
+    public boolean existe(long id) {
+        return ! dao.recover("from Questao where id = :id", id).isEmpty();
+    }
     public Questao recupearar(long id){
-        return (Questao) dao.recover("from Questao where id="+id).get(0);
+        return (Questao) dao.recover("from Questao where id=:id", id).get(0);
     }
       public List<Questao> recuperarTodos(){
         return DaoManagerHiber.getInstance().recover("from Questao");

@@ -5,10 +5,8 @@
  */
 package br.edu.ifpe.garanhuns.provapc.construtores;
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ManagedProperty;
 
 /**
  *

@@ -31,7 +31,9 @@ public class Alternativa {
     }
 
     public Alternativa(long id, String texto, boolean veracidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.id = id;
+        this.texto = texto;
+        this.veracidade = veracidade;
     }
 
     @Override

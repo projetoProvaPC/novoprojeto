@@ -34,6 +34,13 @@ public class Questao {
     
     @OneToMany
     List<Alternativa> Alternativa= new ArrayList<>();
+
+    public Questao(String enunciado, double pontuacao, int tamanhoEspaco) {
+        this.enunciado = enunciado;
+        this.pontuacao = pontuacao;
+        this.tamanhoEspaco = tamanhoEspaco;
+    }
+    
     
      
     public long getId() {
