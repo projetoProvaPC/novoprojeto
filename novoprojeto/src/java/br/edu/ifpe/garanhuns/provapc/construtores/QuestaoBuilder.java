@@ -23,6 +23,8 @@ public class QuestaoBuilder {
     private String enunciado;
     private double pontuacao;
     private int tamanhoEspaco;
+    
+    List<AlternativaBuilder> alternativa = new ArrayList();
 
     public QuestaoBuilder() {
     }

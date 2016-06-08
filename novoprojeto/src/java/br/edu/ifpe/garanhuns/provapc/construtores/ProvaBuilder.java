@@ -7,6 +7,8 @@ package br.edu.ifpe.garanhuns.provapc.construtores;
 
 import br.edu.ifpe.garanhuns.provapc.controladores.ControladorProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -25,6 +27,7 @@ public class ProvaBuilder {
     FacesContext faces = FacesContext.getCurrentInstance();
     private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
+    List<QuestaoBuilder> questao = new ArrayList();
     
     public ProvaBuilder() {
       //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
