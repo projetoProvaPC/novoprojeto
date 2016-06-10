@@ -33,7 +33,7 @@ public class Questao {
     private int tamanhoEspaco;
     
     @OneToMany
-    List<Alternativa> Alternativa= new ArrayList<>();
+    private List<Alternativa> alternativas= new ArrayList<>();
 
     public Questao(String enunciado, double pontuacao, int tamanhoEspaco) {
         this.enunciado = enunciado;
@@ -41,8 +41,12 @@ public class Questao {
         this.tamanhoEspaco = tamanhoEspaco;
     }
     
-    
-     
+    public void adicionarAlternativa(Alternativa a){
+        alternativas.add(a);
+    }
+    public void removerAlternativa(Alternativa a){
+        alternativas.remove(a);
+    } 
     public long getId() {
         return id;
     }
@@ -122,7 +126,7 @@ public class Questao {
         if (!Objects.equals(this.enunciado, other.enunciado)) {
             return false;
         }
-        if (!Objects.equals(this.Alternativa, other.Alternativa)) {
+        if (!Objects.equals(this.alternativas, other.alternativas)) {
             return false;
         }
         return true;
@@ -130,7 +134,7 @@ public class Questao {
 
     @Override
     public String toString() {
-        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", pontuacao=" + pontuacao + ", tamanhoEspaco=" + tamanhoEspaco + ", Alternativa=" + Alternativa + '}';
+        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", pontuacao=" + pontuacao + ", tamanhoEspaco=" + tamanhoEspaco + ", Alternativa=" + alternativas + '}';
     }
     
     
