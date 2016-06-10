@@ -72,7 +72,7 @@ public class Questao {
     }
 
     public List<Alternativa> getAlternativa() {
-        return Alternativa;
+        return alternativas;
     }
 
     public void setEnunciado(String enunciado) {
@@ -88,7 +88,7 @@ public class Questao {
     }
 
     public void setAlternativa(List<Alternativa> Alternativa) {
-        this.Alternativa = Alternativa;
+        this.alternativas = Alternativa;
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Questao {
         hash = 97 * hash + Objects.hashCode(this.enunciado);
         hash = 97 * hash + (int) (Double.doubleToLongBits(this.pontuacao) ^ (Double.doubleToLongBits(this.pontuacao) >>> 32));
         hash = 97 * hash + this.tamanhoEspaco;
-        hash = 97 * hash + Objects.hashCode(this.Alternativa);
+        hash = 97 * hash + Objects.hashCode(this.alternativas);
         return hash;
     }
 
