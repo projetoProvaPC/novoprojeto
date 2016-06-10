@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios;
 
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import java.util.List;
 import org.junit.After;
@@ -45,9 +46,9 @@ public class RepositorioProvaTest {
     @Test
     public void testAdicionarRecuperarTodos() {
         Prova p = new Prova();
-        RepositorioProva instance = new RepositorioProva();
+        RepositorioProvaBD instance = new RepositorioProvaBD();
         instance.adicionar(p);
-        List<Prova> recuperadas = instance.recuperarTodos();
+        List<Prova> recuperadas = instance.recuperar();
         assertTrue(recuperadas.contains(p));
     }
 
@@ -56,13 +57,13 @@ public class RepositorioProvaTest {
      */
     @Test
     public void testAdicionarRemoverRecuperarTodos() {
-        RepositorioProva instance = new RepositorioProva();
+        RepositorioProvaBD instance = new RepositorioProvaBD();
         Prova p = new Prova();
         
         instance.adicionar(p);
         instance.remover(p);
         
-        List<Prova> recuperadas = instance.recuperarTodos();
+        List<Prova> recuperadas = instance.recuperar();
         assertFalse(recuperadas.contains(p));
     }
 
@@ -77,12 +78,12 @@ public class RepositorioProvaTest {
     @Test
     public void testAdicionarRecuperarTodosRecupearar() {
         Prova inserida = new Prova();
-        RepositorioProva instance = new RepositorioProva();
+        RepositorioProvaBD instance = new RepositorioProvaBD();
         instance.adicionar(inserida);
-        List<Prova> recuperadas = instance.recuperarTodos();
+        List<Prova> recuperadas = instance.recuperar();
         Prova recuperada = recuperadas.get(0);
         long id = recuperada.getId();
-        assertEquals(recuperada, instance.recupearar(id));
+        assertEquals(recuperada, instance.recuperar(id));
     }
 
     /*

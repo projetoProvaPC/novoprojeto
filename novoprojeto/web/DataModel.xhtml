@@ -7,9 +7,30 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:accordionPanel value="#{}">
+        <h:form>
             
-        </p:accordionPanel>
-</h:body>
+            <p:panelGrid columns="2">
+                    <h:outputText value="Título"/>
+                    <p:inputText value="#{provaBuilder.titulo}"/>
+                    <p:commandButton value="Cadastrar" action="#{controladorProva.adicionar(provaBuilder.construir())}">
+                        
+                    </p:commandButton>
+                            </p:panelGrid>
+            
+            <p:accordionPanel value="#{controladorGeral.questoes}">
+                <p:tab title="Questao N - Começo do texto">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Enunciado"/>
+                        <p:inputText value="#{questaoBuilder.enunciado}"/>
+                        <h:outputText value="Pontuaçao"/>
+                        <p:inputText value="#{questaoBuilder.pontuacao}"/>
+                        <h:outputText value="Tamanho da Caixa de Texto"/>
+                        <p:inputText value="#{questaoBuilder.tamanhoEspaco}"/>
+                        <p:commandButton value="Cadastrar" action="#{controladorQuestao.adicionar(questaoBuilder.construir())}"/>
+                    </p:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
+    </h:body>
 </html>
 

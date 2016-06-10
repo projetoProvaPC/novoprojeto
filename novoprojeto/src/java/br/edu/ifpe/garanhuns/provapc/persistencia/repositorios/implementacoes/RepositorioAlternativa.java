@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios;
+package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;

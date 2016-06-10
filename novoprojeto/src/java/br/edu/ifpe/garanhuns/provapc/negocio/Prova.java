@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Prova {
+public class Prova implements Persistivel<Prova> {
     @Id
     @GeneratedValue
     long id;
@@ -99,6 +100,11 @@ public class Prova {
     @Override
     public String toString() {
         return "Prova{" + "id=" + id + ", titulo=" + titulo + ", Questao=" + questoes + '}';
+    }
+
+    @Override
+    public void alterar(Prova t) {
+        this.setTitulo(t.getTitulo());
     }
    
 }

@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioAlternativa;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

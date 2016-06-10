@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.RepositorioProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 public class ControladorProva {
     private Prova alterando = null;
     private Prova selected = null;
-    private RepositorioProva repositorio = new RepositorioProva();
+    private RepositorioProvaBD repositorio = new RepositorioProvaBD();
 
     public ControladorProva() {
     }
@@ -30,7 +30,7 @@ public class ControladorProva {
     
     public String adicionar(Prova p) {
         if(repositorio.existe(p.getId())) {
-            repositorio.alterar(p);
+            repositorio.atualizar(p);
         } else {
             repositorio.adicionar(p);
         }
@@ -47,15 +47,15 @@ public class ControladorProva {
     }
 
     public void alterar(Prova p) {
-        repositorio.alterar(p);
+        repositorio.atualizar(p);
     }
 
     public Prova recupearar(long id) {
-        return repositorio.recupearar(id);
+        return repositorio.recuperar(id);
     }
 
     public List<Prova> recuperarTodos() {
-        return repositorio.recuperarTodos();
+        return repositorio.recuperar();
     }
 
     public Prova getSelected() {

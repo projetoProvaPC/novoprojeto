@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.provapc.aplicacao;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.RepositorioProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
 import java.util.List;
 
 /**
@@ -15,12 +15,12 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        RepositorioProva repositorio = new RepositorioProva();
+        RepositorioProvaBD repositorio = new RepositorioProvaBD();
         Prova p = new Prova();
         Prova c = new Prova();
         repositorio.adicionar(p);
         repositorio.adicionar(c);
-        List<Prova> ps = repositorio.recuperarTodos();
+        List<Prova> ps = repositorio.recuperar();
         for(Prova p1 : ps) {
             System.out.println(p1);
         }
