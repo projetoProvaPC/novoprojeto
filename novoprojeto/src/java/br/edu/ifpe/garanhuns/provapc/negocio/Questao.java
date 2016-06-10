@@ -71,10 +71,6 @@ public class Questao {
         return tamanhoEspaco;
     }
 
-    public List<Alternativa> getAlternativa() {
-        return alternativas;
-    }
-
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
@@ -85,10 +81,6 @@ public class Questao {
 
     public void setTamanhoEspaco(int tamanhoEspaço) {
         this.tamanhoEspaco = tamanhoEspaço;
-    }
-
-    public void setAlternativa(List<Alternativa> Alternativa) {
-        this.alternativas = Alternativa;
     }
 
     @Override

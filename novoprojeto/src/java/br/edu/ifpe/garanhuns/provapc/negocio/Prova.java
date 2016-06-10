@@ -29,7 +29,7 @@ public class Prova {
     private String titulo;
     
     @OneToMany
-    List<Questao> Questao = new ArrayList<>();
+    List<Questao> questoes = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -47,12 +47,12 @@ public class Prova {
         this.titulo = titulo;
     }
     
-    public List<Questao> getQuestao() {
-        return Questao;
+    public void adicionarAlternativa(Questao q){
+        questoes.add(q);
     }
-
-    public void setQuestao(List<Questao> Questao) {
-        this.Questao = Questao;
+    
+    public void removerAlternativa(Questao q){
+        questoes.remove(q);
     }
 
     public String getTitulo() {
@@ -68,7 +68,7 @@ public class Prova {
         int hash = 5;
         hash = 71 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 71 * hash + Objects.hashCode(this.titulo);
-        hash = 71 * hash + Objects.hashCode(this.Questao);
+        hash = 71 * hash + Objects.hashCode(this.questoes);
         return hash;
     }
 
@@ -90,7 +90,7 @@ public class Prova {
         if (!Objects.equals(this.titulo, other.titulo)) {
             return false;
         }
-        if (!Objects.equals(this.Questao, other.Questao)) {
+        if (!Objects.equals(this.questoes, other.questoes)) {
             return false;
         }
         return true;
@@ -98,7 +98,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return "Prova{" + "id=" + id + ", titulo=" + titulo + ", Questao=" + Questao + '}';
+        return "Prova{" + "id=" + id + ", titulo=" + titulo + ", Questao=" + questoes + '}';
     }
    
 }
