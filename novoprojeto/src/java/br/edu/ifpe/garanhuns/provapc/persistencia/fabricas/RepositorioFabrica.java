@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.provapc.persistencia.factory;
+package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioProva;
@@ -17,7 +17,7 @@ public abstract class RepositorioFabrica {
     
     private static RepositorioFabrica fabrica = null;
     protected RepositorioFabrica(){}
-    public RepositorioFabrica getInstance() {
+    public static RepositorioFabrica getInstance() {
         if(fabrica == null) fabrica = new RepositorioFabricaMemoria();
         return fabrica;
     }

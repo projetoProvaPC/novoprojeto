@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.garanhuns.provapc.persistencia.factory;
+package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioAlternativaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaMemoria;
