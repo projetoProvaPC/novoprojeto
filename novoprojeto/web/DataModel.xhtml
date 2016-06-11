@@ -24,11 +24,20 @@
                         <p:inputText value="#{questaoBuilder.enunciado}"/>
                         <h:outputText value="Pontuaçao"/>
                         <p:inputText value="#{questaoBuilder.pontuacao}"/>
-                        <h:outputText value="Tamanho da Caixa de Texto"/>
-                        <p:inputText value="#{questaoBuilder.tamanhoEspaco}"/>
                         <p:commandButton value="Cadastrar" action="#{controladorQuestao.adicionar(questaoBuilder.construir())}"/>
                     </p:panelGrid>
+                    <br></br>
+                <p:panelGrid columns="2">
+                    <h:outputText value="id"/>
+                    <p:inputText value="#{alternativaBuilder.id}"/>
+                    <h:outputText value="Texto"/>
+                    <p:inputText value="#{alternativaBuilder.texto}"/>
+                    <h:outputText value="Veracidade"/>
+                    <p:inputText value="#{alternativaBuilder.veracidade}"/>
+                    <p:commandButton value="Cadastrar" action="#{controladorAlternativa.adicionar(alternativaBuilder.construir())}"/>
+                </p:panelGrid>
                 </p:tab>
+                
             </p:accordionPanel>
         </h:form>
     </h:body>

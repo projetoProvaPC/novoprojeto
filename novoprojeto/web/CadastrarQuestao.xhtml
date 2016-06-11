@@ -14,8 +14,6 @@
                     <p:inputText value="#{questaoBuilder.enunciado}"/>
                     <h:outputText value="Pontuaçao"/>
                     <p:inputText value="#{questaoBuilder.pontuacao}"/>
-                    <h:outputText value="Tamanho da Caixa de Texto"/>
-                    <p:inputText value="#{questaoBuilder.tamanhoEspaco}"/>
                     <p:commandButton value="Cadastrar" action="#{controladorQuestao.adicionar(questaoBuilder.construir())}"/>
                 </p:panelGrid>
                 
