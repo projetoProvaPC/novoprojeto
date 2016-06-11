@@ -8,15 +8,12 @@
     </h:head>
     <h:body>
         <h:form>
-            
+
             <p:panelGrid columns="2">
-                    <h:outputText value="Título"/>
-                    <p:inputText value="#{provaBuilder.titulo}"/>
-                    <p:commandButton value="Cadastrar" action="#{controladorProva.adicionar(provaBuilder.construir())}">
-                        
-                    </p:commandButton>
-                            </p:panelGrid>
-            
+                <h:outputText value="Título"/>
+                <p:inputText value="#{provaBuilder.titulo}"/>
+            </p:panelGrid>
+
             <p:accordionPanel value="#{controladorGeral.questoes}">
                 <p:tab title="Questao N - Começo do texto">
                     <p:panelGrid columns="2">
@@ -24,21 +21,21 @@
                         <p:inputText value="#{questaoBuilder.enunciado}"/>
                         <h:outputText value="Pontuaçao"/>
                         <p:inputText value="#{questaoBuilder.pontuacao}"/>
-                        <p:commandButton value="Cadastrar" action="#{controladorQuestao.adicionar(questaoBuilder.construir())}"/>
                     </p:panelGrid>
                     <br></br>
-                <p:panelGrid columns="2">
-                    <h:outputText value="id"/>
-                    <p:inputText value="#{alternativaBuilder.id}"/>
-                    <h:outputText value="Texto"/>
-                    <p:inputText value="#{alternativaBuilder.texto}"/>
-                    <h:outputText value="Veracidade"/>
-                    <p:inputText value="#{alternativaBuilder.veracidade}"/>
-                    <p:commandButton value="Cadastrar" action="#{controladorAlternativa.adicionar(alternativaBuilder.construir())}"/>
-                </p:panelGrid>
+                    <p:panelGrid columns="2">
+                        <h:outputText value="id"/>
+                        <p:inputText value="#{alternativaBuilder.id}"/>
+                        <h:outputText value="Texto"/>
+                        <p:inputText value="#{alternativaBuilder.texto}"/>
+                        <h:outputText value="Veracidade"/>
+                        <p:inputText value="#{alternativaBuilder.veracidade}"/>
+                    </p:panelGrid>
                 </p:tab>
-                
+               
             </p:accordionPanel>
+            <br></br>
+            <p:commandButton value="Finalizar Prova" action="#{controladorGeral.finalizarProva(p)}"/>
         </h:form>
     </h:body>
 </html>
