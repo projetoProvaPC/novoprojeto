@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;

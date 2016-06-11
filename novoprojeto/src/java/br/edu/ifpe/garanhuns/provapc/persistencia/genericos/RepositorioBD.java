@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos;
+package br.edu.ifpe.garanhuns.provapc.persistencia.genericos;
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Repositorio;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Repositorio;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  * @author lucas
  * @param <T>
  */
-public abstract class RepositorioDB<T extends Persistivel> implements Repositorio<T>{
+public abstract class RepositorioBD<T extends Persistivel> implements Repositorio<T>{
 
     protected DaoManagerHiber dao = DaoManagerHiber.getInstance();
     

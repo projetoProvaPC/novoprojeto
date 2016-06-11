@@ -5,24 +5,24 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioAlternativa;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioProva;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 
 /**
  * Use para conseguir repositórios. Caso queira alterar de Memoria para BD ou outra coisa, mude dentro do método getInstance.
  * @author lucas
  */
-public abstract class RepositorioFabrica {
+public abstract class FabricaRepositorio {
     
-    private static RepositorioFabrica fabrica = null;
-    protected RepositorioFabrica(){}
+    private static FabricaRepositorio fabrica = null;
+    protected FabricaRepositorio(){}
     /**
      * Isso vai lhe dar uma Fábrica de Repositórios.
      * @return uma fábrica de repositórios.
      */
-    public static RepositorioFabrica getInstance() {
-        if(fabrica == null) fabrica = new RepositorioFabricaMemoria(); //m mude aqui!
+    public static FabricaRepositorio getFabrica() {
+        if(fabrica == null) fabrica = new FabricaRepositorioMemoria(); //m mude aqui!
         return fabrica;
     }
     /**

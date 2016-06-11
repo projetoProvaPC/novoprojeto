@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios;
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import java.util.List;
 import org.junit.After;

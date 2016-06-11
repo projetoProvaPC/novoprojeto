@@ -6,8 +6,8 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
-import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.RepositorioFabrica;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,7 +19,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ControladorAlternativa {
-   private final RepositorioAlternativa repositorio = RepositorioFabrica.getInstance().getRepositorioAlternativa();
+   private final RepositorioAlternativa repositorio = FabricaRepositorio.getFabrica().getRepositorioAlternativa();
 
     public void adicionar(Alternativa q) {
         repositorio.adicionar(q);

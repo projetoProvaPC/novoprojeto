@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces;
+package br.edu.ifpe.garanhuns.provapc.persistencia.interfaces;
 
 import java.util.List;
 
