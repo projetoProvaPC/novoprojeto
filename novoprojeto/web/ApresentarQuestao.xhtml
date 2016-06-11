@@ -27,9 +27,6 @@
                 <p:column headerText="Pontuacao">
                     <h:outputText value="#{questao.pontuacao}"/>
                 </p:column>
-                <p:column headerText="Espaco">
-                    <h:outputText value="#{questao.tamanhoEspaco}"/>
-                </p:column>
                 <f:facet name="footer">
                     <p:commandButton value="Adicionar Questão" action="CadastrarQuestao.xhtml"/>
                     <p:commandButton value="Alterar" action="#{controladorQuestao.alterar()}"/>
