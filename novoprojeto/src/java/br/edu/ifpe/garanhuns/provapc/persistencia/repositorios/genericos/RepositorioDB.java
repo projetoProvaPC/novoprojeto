@@ -8,7 +8,6 @@ package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.IdNaoDisponivelException;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Repositorio;
 import java.util.List;
 
@@ -22,19 +21,18 @@ public abstract class RepositorioDB<T extends Persistivel> implements Repositori
     protected DaoManagerHiber dao = DaoManagerHiber.getInstance();
     
     @Override
-    public void adicionar(T t) throws IdNaoDisponivelException {
+    public void adicionar(T t){
         dao.persist(t);
     }
 
     @Override
-    public T remover(long id) {
+    public void remover(long id) {
         T t = recuperar(id);
         dao.delete(t);
-        return t;
     }
 
     @Override
-    public void atualizar(T t) {
+    public void alterar(T t) {
         dao.update(t);
     }
 

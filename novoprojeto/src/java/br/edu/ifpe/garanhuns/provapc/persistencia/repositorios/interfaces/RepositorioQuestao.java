@@ -5,14 +5,14 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces;
 
-import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
 
 /**
  *
- * Interface para repositórios de Provas.
+ * Interface para repositórios de questões.
  * 
  * @author lucas
  */
-public interface RepositorioProva extends Repositorio<Prova>{
+public interface RepositorioQuestao extends Repositorio<Questao> {
     
 }

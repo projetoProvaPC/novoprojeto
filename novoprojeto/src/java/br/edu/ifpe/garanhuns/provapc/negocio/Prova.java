@@ -48,11 +48,11 @@ public class Prova implements Persistivel<Prova> {
         this.titulo = titulo;
     }
     
-    public void adicionarAlternativa(Questao q){
+    public void adicionarQuestao(Questao q){
         questoes.add(q);
     }
     
-    public void removerAlternativa(Questao q){
+    public void removerQuestao(Questao q){
         questoes.remove(q);
     }
 
@@ -105,6 +105,15 @@ public class Prova implements Persistivel<Prova> {
     @Override
     public void alterar(Prova t) {
         this.setTitulo(t.getTitulo());
+    }
+
+    @Override
+    public Prova copiar() {
+        Prova p = new Prova(id, titulo);
+        for(Questao q : questoes) {
+            p.adicionarQuestao(q.copiar());
+        }
+        return p;
     }
    
 }

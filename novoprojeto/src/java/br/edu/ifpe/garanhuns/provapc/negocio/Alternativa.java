@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Alternativa {
+public class Alternativa implements Persistivel<Alternativa>{
     @Id
     @GeneratedValue
     private long id;
@@ -30,6 +31,11 @@ public class Alternativa {
     public Alternativa(){
     }
 
+    public Alternativa(String texto, boolean veracidade) {
+        this.texto = texto;
+        this.veracidade = veracidade;
+    }
+    
     public Alternativa(long id, String texto, boolean veracidade) {
         this.id = id;
         this.texto = texto;
@@ -95,6 +101,17 @@ public class Alternativa {
     @Override
     public String toString() {
         return "Alternativa{" + "id=" + id + ", texto=" + texto + ", veracidade=" + veracidade + '}';
+    }
+
+    @Override
+    public void alterar(Alternativa t) {
+        this.setTexto(t.getTexto());
+        this.setVeracidade(t.isVeracidade());
+    }
+
+    @Override
+    public Alternativa copiar() {
+        return new Alternativa(texto, veracidade);
     }
     
  

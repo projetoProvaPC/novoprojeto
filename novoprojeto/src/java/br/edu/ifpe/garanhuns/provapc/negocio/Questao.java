@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Questao {
+public class Questao implements Persistivel<Questao> {
     @Id
     @GeneratedValue
     private long id;
@@ -127,6 +128,22 @@ public class Questao {
     @Override
     public String toString() {
         return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", pontuacao=" + pontuacao + ", tamanhoEspaco=" + tamanhoEspaco + ", Alternativa=" + alternativas + '}';
+    }
+
+    @Override
+    public void alterar(Questao q) {
+        this.setEnunciado(q.getEnunciado());
+        this.setPontuacao(q.getPontuacao());
+        this.setTamanhoEspaco(q.getTamanhoEspaco());
+    }
+
+    @Override
+    public Questao copiar() {
+        Questao q = new Questao(enunciado, pontuacao, tamanhoEspaco);
+        for(Alternativa a : alternativas) {
+            q.adicionarAlternativa(a.copiar());
+        }
+        return q;
     }
     
     

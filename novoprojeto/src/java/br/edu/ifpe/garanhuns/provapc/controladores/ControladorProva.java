@@ -30,7 +30,7 @@ public class ControladorProva {
     
     public String adicionar(Prova p) {
         if(repositorio.existe(p.getId())) {
-            repositorio.atualizar(p);
+            repositorio.alterar(p);
         } else {
             repositorio.adicionar(p);
         }
@@ -47,7 +47,7 @@ public class ControladorProva {
     }
 
     public void alterar(Prova p) {
-        repositorio.atualizar(p);
+        repositorio.alterar(p);
     }
 
     public Prova recupearar(long id) {
