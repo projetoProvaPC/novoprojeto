@@ -5,9 +5,9 @@
  */
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
-import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioQuestaoBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.RepositorioFabrica;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioQuestao;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 public class ControladorQuestao {
     private Questao alterando = null;
     private Questao selected = null;
-    private RepositorioQuestaoBD repositorio = new RepositorioQuestaoBD();
+    private final RepositorioQuestao repositorio = RepositorioFabrica.getInstance().getRepositorioQuestao();
 
     public ControladorQuestao() {
     }

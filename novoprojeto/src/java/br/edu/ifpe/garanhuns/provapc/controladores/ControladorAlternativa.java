@@ -19,7 +19,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ControladorAlternativa {
-   private RepositorioAlternativa repositorio = RepositorioFabrica.getInstance().getRepositorioAlternativa();
+   private final RepositorioAlternativa repositorio = RepositorioFabrica.getInstance().getRepositorioAlternativa();
 
     public void adicionar(Alternativa q) {
         repositorio.adicionar(q);
