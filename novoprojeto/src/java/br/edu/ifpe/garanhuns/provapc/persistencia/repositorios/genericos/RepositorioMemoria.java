@@ -7,7 +7,6 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos;
 
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.exceptions.IdNaoDisponivelException;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Repositorio;
 import java.util.ArrayList;
@@ -26,23 +25,18 @@ public class RepositorioMemoria<Tipo extends Persistivel> implements Repositorio
     private static long maxid = 1;
     
     @Override
-    public void adicionar(Tipo t) throws IdNaoDisponivelException {
-        if(t.getId()==-1)
-            t.setId(maxid++);
-        else if(elementos.containsKey(t.getId()))
-            throw new IdNaoDisponivelException();
-        else if(maxid < t.getId() )
-            maxid = t.getId();
+    public void adicionar(Tipo t){
+        t.setId(maxid++);
         elementos.put(t.getId(), t);
     }
 
     @Override
-    public Tipo remover(long id) {
-        return elementos.remove(id);
+    public void remover(long id) {
+        elementos.remove(id);
     }
 
     @Override
-    public void atualizar(Tipo t) {
+    public void alterar(Tipo t) {
         try {
             elementos.get(t.getId()).alterar(t);
         } catch(NullPointerException e) {

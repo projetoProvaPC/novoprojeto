@@ -7,7 +7,7 @@ package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioQuestaoBD;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 public class ControladorQuestao {
     private Questao alterando = null;
     private Questao selected = null;
-    private RepositorioQuestao repositorio = new RepositorioQuestao();
+    private RepositorioQuestaoBD repositorio = new RepositorioQuestaoBD();
 
     public ControladorQuestao() {
     }
@@ -52,11 +52,11 @@ public class ControladorQuestao {
     }
 
     public Questao recupearar(long id) {
-        return repositorio.recupearar(id);
+        return repositorio.recuperar(id);
     }
 
     public List<Questao> recuperarTodos() {
-        return repositorio.recuperarTodos();
+        return repositorio.recuperar();
     }
     
     public Questao getSelected() {

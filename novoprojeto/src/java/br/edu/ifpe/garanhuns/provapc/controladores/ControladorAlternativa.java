@@ -6,7 +6,7 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioAlternativaBD;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ControladorAlternativa {
-   private RepositorioAlternativa repositorio = new RepositorioAlternativa();
+   private RepositorioAlternativaBD repositorio = new RepositorioAlternativaBD();
 
     public void adicionar(Alternativa q) {
         repositorio.adicionar(q);
@@ -33,10 +33,10 @@ public class ControladorAlternativa {
     }
 
     public Alternativa recupearar(long id) {
-        return repositorio.recupearar(id);
+        return repositorio.recuperar(id);
     }
 
     public List<Alternativa> recuperarTodos() {
-        return repositorio.recuperarTodos();
+        return repositorio.recuperar();
     }
 }
