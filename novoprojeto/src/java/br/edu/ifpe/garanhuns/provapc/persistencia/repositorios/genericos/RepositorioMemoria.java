@@ -7,7 +7,7 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos;
 
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.IdNaoDisponivelException;
+import br.edu.ifpe.garanhuns.provapc.persistencia.exceptions.IdNaoDisponivelException;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
 import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Repositorio;
 import java.util.ArrayList;
