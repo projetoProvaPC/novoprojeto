@@ -22,7 +22,7 @@ public abstract class RepositorioFabrica {
      * @return uma fábrica de repositórios.
      */
     public static RepositorioFabrica getInstance() {
-        if(fabrica == null) fabrica = new RepositorioFabricaMemoria();
+        if(fabrica == null) fabrica = new RepositorioFabricaMemoria(); //m mude aqui!
         return fabrica;
     }
     /**
