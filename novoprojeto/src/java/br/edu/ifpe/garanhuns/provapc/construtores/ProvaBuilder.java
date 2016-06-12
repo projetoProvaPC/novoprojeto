@@ -79,6 +79,16 @@ public class ProvaBuilder {
     public void setQuestoes(List<QuestaoBuilder> questoes) {
         this.questoes = questoes;
     }
+
+    public boolean addQuestao(QuestaoBuilder e) {
+        return questoes.add(e);
+    }
+
+    public boolean removeQuestao(QuestaoBuilder o) {
+        return questoes.remove(o);
+    }
+    
+    
     
     public Prova construir(){
         return new Prova(id,titulo);

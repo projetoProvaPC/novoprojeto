@@ -40,7 +40,7 @@ public class ControladorGeral {
          return "ApresentarProva.xhtml";
     }
      public void adicionarQuestao(){
-         provaBuilder.getQuestoes().add(new QuestaoBuilder());
+         provaBuilder.addQuestao(new QuestaoBuilder());
          
      }
 }
