@@ -5,10 +5,14 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes;
 
+import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos.RepositorioMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioQuestao;
+
 /**
  *
  * @author lucas
  */
-public class RepositorioQuestaoMemoria {
+public class RepositorioQuestaoMemoria extends RepositorioMemoria<Questao> implements RepositorioQuestao {
     
 }

@@ -6,7 +6,7 @@
 
 package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -66,5 +66,5 @@ public interface Repositorio<Tipo extends Persistivel> {
      * Recupera todos os objetos que estão no repositório.
      * @return uma coleção com todos os objetos do repositório.
      */
-    public Collection<Tipo> recuperar();
+    public List<Tipo> recuperar();
 }
