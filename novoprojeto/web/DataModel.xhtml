@@ -8,20 +8,20 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="MyForm">
             <ui:include src="Menu.xhtml"/>
             <p:panelGrid columns="2">
                 <h:outputText value="Título"/>
                 <p:inputText value="#{provaBuilder.titulo}"/>
             </p:panelGrid>
 
-            <p:accordionPanel value="#{controladorGeral.questoes}">
+            <p:accordionPanel id="Accordion" value="#{controladorGeral.questoes}" var="questao">
                 <p:tab title="Questao N - Começo do texto">
                     <p:panelGrid columns="2">
                         <h:outputText value="Enunciado"/>
-                        <p:inputText value="#{questaoBuilder.enunciado}"/>
+                        <p:inputText value="#{questao.enunciado}"/>
                         <h:outputText value="Pontuaçao"/>
-                        <p:inputText value="#{questaoBuilder.pontuacao}"/>
+                        <p:inputText value="#{questao.pontuacao}"/>
                     </p:panelGrid>
                     <br></br>
                     <p:panelGrid columns="2">
@@ -36,7 +36,7 @@
                
             </p:accordionPanel>
             <br></br>
-            <p:commandButton value="Adicionar Questão" action="#{controladorGeral.adicionarQuestao()}"/>
+            <p:commandButton value="Adicionar Questão" action="#{controladorGeral.adicionarQuestao()}" update=":MyForm:Accordion"/>
             <p:commandButton value="Finalizar Prova" action="#{controladorGeral.finalizarProva()}"/>
         </h:form>
     </h:body>

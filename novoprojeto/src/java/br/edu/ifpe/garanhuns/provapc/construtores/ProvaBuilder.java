@@ -27,7 +27,7 @@ public class ProvaBuilder {
     FacesContext faces = FacesContext.getCurrentInstance();
     private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
-    List<QuestaoBuilder> questoes = new ArrayList();
+    List<QuestaoBuilder> questoes = new ArrayList<>();
     
     public ProvaBuilder() {
       //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
