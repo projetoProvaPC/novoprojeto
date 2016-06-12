@@ -8,8 +8,9 @@ package br.edu.ifpe.garanhuns.provapc.controladores;
 import br.edu.ifpe.garanhuns.provapc.construtores.ProvaBuilder;
 import br.edu.ifpe.garanhuns.provapc.construtores.QuestaoBuilder;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
-import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -21,20 +22,25 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class ControladorGeral {
     
-    private ProvaBuilder prova = new ProvaBuilder();
-    private RepositorioProvaBD repositorio = new RepositorioProvaBD();
+    private ProvaBuilder provaBuilder = new ProvaBuilder();
+    private RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
     
     public List<QuestaoBuilder> getQuestoes() {
-        return prova.getQuestoes();
+        return provaBuilder.getQuestoes();
     }
     
     
-     public String finalizarProva(Prova p) {
+     public String finalizarProva() {
+         Prova p = provaBuilder.construir();
         if(repositorio.existe(p.getId())) {
-            repositorio.atualizar(p);
+            repositorio.alterar(p);
         } else {
             repositorio.adicionar(p);
         }
          return "ApresentarProva.xhtml";
     }
+     public void adicionarQuestao(){
+         provaBuilder.getQuestoes().add(new QuestaoBuilder());
+         
+     }
 }
