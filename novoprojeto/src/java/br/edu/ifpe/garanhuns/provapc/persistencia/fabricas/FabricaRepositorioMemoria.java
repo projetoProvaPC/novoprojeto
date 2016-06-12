@@ -5,20 +5,20 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioAlternativaBD;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioProvaBD;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.implementacoes.RepositorioQuestaoBD;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioAlternativa;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioProva;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlternativaMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 
 /**
  *
  * @author lucas
  */
-public class RepositorioFabricaBD extends RepositorioFabrica {
-    
-    protected RepositorioFabricaBD() {
+class FabricaRepositorioMemoria extends FabricaRepositorio {
+
+    protected FabricaRepositorioMemoria() {
         
     }
     
@@ -29,21 +29,21 @@ public class RepositorioFabricaBD extends RepositorioFabrica {
     @Override
     public RepositorioProva getRepositorioProva() {
         if(provas==null)
-            provas = new RepositorioProvaBD();
+            provas = new RepositorioProvaMemoria();
         return provas;
     }
 
     @Override
     public RepositorioAlternativa getRepositorioAlternativa() {
         if(alternativas==null)
-            alternativas = new RepositorioAlternativaBD();
+            alternativas = new RepositorioAlternativaMemoria();
         return alternativas;
     }
 
     @Override
     public RepositorioQuestao getRepositorioQuestao() {
         if(questoes==null)
-            questoes = new RepositorioQuestaoBD();
+            questoes = new RepositorioQuestaoMemoria();
         return questoes;
     }
     

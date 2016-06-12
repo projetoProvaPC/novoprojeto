@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.genericos;
+package br.edu.ifpe.garanhuns.provapc.persistencia.genericos;
 
 
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Persistivel;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.Repositorio;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Repositorio;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

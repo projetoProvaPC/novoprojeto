@@ -6,8 +6,8 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
-import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.RepositorioFabrica;
-import br.edu.ifpe.garanhuns.provapc.persistencia.repositorios.interfaces.RepositorioProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,7 +21,7 @@ import javax.faces.bean.SessionScoped;
 public class ControladorProva {
     private Prova alterando = null;
     private Prova selected = null;
-    private final RepositorioProva repositorio = RepositorioFabrica.getInstance().getRepositorioProva();
+    private final RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
 
     public ControladorProva() {
     }
