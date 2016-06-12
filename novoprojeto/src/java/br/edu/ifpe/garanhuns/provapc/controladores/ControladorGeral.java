@@ -24,12 +24,15 @@ public class ControladorGeral {
     
     private ProvaBuilder provaBuilder = new ProvaBuilder();
     private RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
-    
-    public List<QuestaoBuilder> getQuestoes() {
-        return provaBuilder.getQuestoes();
+
+    public ProvaBuilder getProvaBuilder() {
+        return provaBuilder;
     }
-    
-    
+
+    public void setProvaBuilder(ProvaBuilder provaBuilder) {
+        this.provaBuilder = provaBuilder;
+    }
+        
      public String finalizarProva() {
          Prova p = provaBuilder.construir();
         if(repositorio.existe(p.getId())) {
