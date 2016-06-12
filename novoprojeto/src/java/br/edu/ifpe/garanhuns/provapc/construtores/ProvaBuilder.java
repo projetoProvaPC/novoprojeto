@@ -38,6 +38,10 @@ public class ProvaBuilder {
             this.titulo = p.getTitulo();
             this.alterando = true;
         }
+        QuestaoBuilder questao1 = new QuestaoBuilder();
+        QuestaoBuilder questao2 = new QuestaoBuilder();
+        questoes.add(questao1);
+        questoes.add(questao2);
     }
     
     public String getTitulo() {
@@ -82,5 +86,6 @@ public class ProvaBuilder {
     
     public Prova construir(){
         return new Prova(id,titulo);
+        
     }
 }
