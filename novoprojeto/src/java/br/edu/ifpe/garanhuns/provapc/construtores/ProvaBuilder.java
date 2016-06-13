@@ -23,11 +23,11 @@ public class ProvaBuilder {
     
     private long id;
     private String titulo;
-    //@ManagedProperty (value="#{controladorProva}")
-    FacesContext faces = FacesContext.getCurrentInstance();
-    private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
     List<QuestaoBuilder> questoes = new ArrayList<>();
+    //@ManagedProperty (value="#{controladorProva}")
+    /*FacesContext faces = FacesContext.getCurrentInstance();
+    private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     
     public ProvaBuilder() {
       //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
@@ -42,6 +42,16 @@ public class ProvaBuilder {
         QuestaoBuilder questao2 = new QuestaoBuilder();
         questoes.add(questao1);
         questoes.add(questao2);
+    }*/
+    
+    public ProvaBuilder() {
+        
+    }
+
+    public ProvaBuilder(Prova selected) {
+        this.id = selected.getId();
+        this.titulo = selected.getTitulo();
+        this.alterando = true;
     }
     
     public String getTitulo() {
@@ -60,13 +70,13 @@ public class ProvaBuilder {
         this.id = id;
     }
 
-    public ControladorProva getControlador() {
+    /*public ControladorProva getControlador() {
         return controlador;
     }
 
     public void setControlador(ControladorProva controlador) {
         this.controlador = controlador;
-    }
+    }*/
 
     public boolean isAlterando() {
         return alterando;
@@ -91,7 +101,6 @@ public class ProvaBuilder {
     public boolean removeQuestao(QuestaoBuilder o) {
         return questoes.remove(o);
     }
-    
     
     
     public Prova construir(){
