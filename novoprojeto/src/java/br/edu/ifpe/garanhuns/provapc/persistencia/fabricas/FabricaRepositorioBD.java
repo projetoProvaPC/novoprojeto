@@ -22,29 +22,19 @@ class FabricaRepositorioBD extends FabricaRepositorio {
         
     }
     
-    private RepositorioProva provas = null;
-    private RepositorioQuestao questoes = null;
-    private RepositorioAlternativa alternativas = null;
-    
     @Override
-    public RepositorioProva getRepositorioProva() {
-        if(provas==null)
-            provas = new RepositorioProvaBD();
-        return provas;
+    public RepositorioProva newRepositorioProva() {
+        return new RepositorioProvaBD();
     }
 
     @Override
-    public RepositorioAlternativa getRepositorioAlternativa() {
-        if(alternativas==null)
-            alternativas = new RepositorioAlternativaBD();
-        return alternativas;
+    public RepositorioAlternativa newRepositorioAlternativa() {
+        return new RepositorioAlternativaBD();
     }
 
     @Override
-    public RepositorioQuestao getRepositorioQuestao() {
-        if(questoes==null)
-            questoes = new RepositorioQuestaoBD();
-        return questoes;
+    public RepositorioQuestao newRepositorioQuestao() {
+        return new RepositorioQuestaoBD();
     }
     
 }
