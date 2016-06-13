@@ -16,7 +16,7 @@
             </p:panelGrid>
 
             <p:accordionPanel id="Accordion" value="#{controladorGeral.provaBuilder.questoes}" var="questao">
-                <p:tab title="Questao N - Começo do texto">
+                <p:tab title="Questão #{controladorGeral.provaBuilder.questoes.indexOf(questao) + 1} - Começo do texto">
                     <p:panelGrid columns="2">
                         <h:outputText value="Enunciado"/>
                         <p:inputText value="#{questao.enunciado}"/>
