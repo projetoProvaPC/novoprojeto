@@ -6,9 +6,13 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlternativaMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlunoMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProfessorMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 
@@ -25,6 +29,8 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
     private RepositorioProva provas = null;
     private RepositorioQuestao questoes = null;
     private RepositorioAlternativa alternativas = null;
+    private RepositorioAluno alunos = null;
+    private RepositorioProfessor professores = null;
     
     @Override
     public RepositorioProva getRepositorioProva() {
@@ -46,5 +52,18 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
             questoes = new RepositorioQuestaoMemoria();
         return questoes;
     }
-    
+
+    @Override
+    public RepositorioAluno getRepositorioAluno() {
+        if(alunos==null)
+            alunos = new RepositorioAlunoMemoria();
+        return alunos;
+    }
+
+    @Override
+    public RepositorioProfessor getRepositorioProfessor() {
+        if(professores==null)
+            professores = new RepositorioProfessorMemoria();
+        return professores;
+    }
 }

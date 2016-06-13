@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Thais
+ * @author Thais, Lucinaldo Melquíades Jr.
  */
 @Entity
 @Table
@@ -37,6 +37,13 @@ public class Questao implements Persistivel<Questao> {
     private List<Alternativa> alternativas= new ArrayList<>();
 
     public Questao(String enunciado, double pontuacao, int tamanhoEspaco) {
+        this.enunciado = enunciado;
+        this.pontuacao = pontuacao;
+        this.tamanhoEspaco = tamanhoEspaco;
+    }
+
+    public Questao(long id, String enunciado, double pontuacao, int tamanhoEspaco) {
+        this.id = id;
         this.enunciado = enunciado;
         this.pontuacao = pontuacao;
         this.tamanhoEspaco = tamanhoEspaco;

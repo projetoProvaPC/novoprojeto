@@ -6,9 +6,13 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlternativaBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlunoBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProfessorBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 
@@ -25,6 +29,8 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     private RepositorioProva provas = null;
     private RepositorioQuestao questoes = null;
     private RepositorioAlternativa alternativas = null;
+    private RepositorioAluno alunos = null;
+    private RepositorioProfessor professores = null;
     
     @Override
     public RepositorioProva getRepositorioProva() {
@@ -46,5 +52,16 @@ class FabricaRepositorioBD extends FabricaRepositorio {
             questoes = new RepositorioQuestaoBD();
         return questoes;
     }
-    
+    @Override
+    public RepositorioAluno getRepositorioAluno() {
+        if(alunos==null)
+            alunos = new RepositorioAlunoBD();
+        return alunos;
+    }
+    @Override
+    public RepositorioProfessor getRepositorioProfessor() {
+        if(professores==null)
+            professores = new RepositorioProfessorBD();
+        return professores;
+    }
 }

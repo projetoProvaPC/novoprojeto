@@ -6,6 +6,8 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 
@@ -40,4 +42,6 @@ public abstract class FabricaRepositorio {
      * @return repositório para questões.
      */
     public abstract RepositorioQuestao getRepositorioQuestao();
+    public abstract RepositorioAluno getRepositorioAluno();
+    public abstract RepositorioProfessor getRepositorioProfessor();
 }
