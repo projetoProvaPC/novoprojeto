@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Apresentar Aluno</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:dataTable id="table"
+                         value="#{controladorProfessor.recuperarTodos()}" 
+                         var="professor" 
+                         selectionMode="single"
+                         selection="#{controladorProfessor.selected}"
+                         rowKey="#{professor.id}">
+                <f:facet name="header">
+                    <h:outputText value="Apresentar Professores"/>
+                </f:facet>
+                <p:column headerText="id">
+                    <h:outputText value="#{professor.id}"/>
+                </p:column>
+                <p:column headerText="Siape">
+                    <h:outputText value="#{professor.siape}"/>
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{professor.nome}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Adicionar Professor" action="CadastrarProfessor.xhtml"/>
+                    <p:commandButton value="Alterar" action="#{controladorProfessor.alterar()}"/>
+                    <p:commandButton value="Atualizar Página" oncomplete=":FromProfessor:table"/>
+                    <p:commandButton value="Remover" oncomplete=":FromProfessor:table" action="#{controladorProfessor.remover()}"/>
+                </f:facet>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

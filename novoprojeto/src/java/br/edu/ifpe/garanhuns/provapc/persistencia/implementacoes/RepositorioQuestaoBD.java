@@ -27,7 +27,7 @@ public class RepositorioQuestaoBD implements RepositorioQuestao {
     public void remover(Questao q) {
         dao.delete(q);
     }
-
+    @Override
     public void alterar(Questao q) {
         dao.update(q);
     }
