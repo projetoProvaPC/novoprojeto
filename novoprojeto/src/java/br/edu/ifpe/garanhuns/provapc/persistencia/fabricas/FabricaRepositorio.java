@@ -5,6 +5,10 @@
  */
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
+import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
+import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Repositorio;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
@@ -28,7 +32,7 @@ public abstract class FabricaRepositorio {
      * @return uma fábrica de repositórios.
      */
     public static FabricaRepositorio getFabrica() {
-        if(fabrica == null) fabrica = new FabricaRepositorioMemoria(); //m mude aqui!
+        if(fabrica == null) fabrica = new FabricaRepositorioBD(); //m mude aqui!
         return fabrica;
     }
     
@@ -77,5 +81,20 @@ public abstract class FabricaRepositorio {
      * @return repositório para questões.
      */
     protected abstract RepositorioQuestao newRepositorioQuestao();
-    
+    /**
+     * Retorna um repositório para a classe desejada.
+     * @param c a classe desejada
+     * @return  o repositório para a classe
+     */
+    public Repositorio getRepositorio(Class c) {
+        if(c==null)
+            return null;
+        else if(c.equals(Prova.class)) 
+            return this.getRepositorioProva();
+        else if(c.equals(Alternativa.class)) 
+            return this.getRepositorioAlternativa();
+        else if(c.equals(Questao.class))
+            return this.getRepositorioQuestao();
+       return null; 
+    }
 }
