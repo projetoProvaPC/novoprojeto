@@ -44,6 +44,10 @@ public class Prova implements Persistivel<Prova> {
     public Prova() {
     }
 
+    public Prova(String titulo) {
+        this.titulo = titulo;
+    }
+    
     public Prova(long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
