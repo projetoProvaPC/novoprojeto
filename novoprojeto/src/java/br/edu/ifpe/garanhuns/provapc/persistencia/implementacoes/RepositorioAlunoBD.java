@@ -14,10 +14,5 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
  * @author Lucinaldo Melquíades Jr.
  */
 public class RepositorioAlunoBD extends RepositorioBD<Aluno> implements RepositorioAluno{
-
-    @Override
-    protected String getClasse() {
-        return "Aluno";
-    }
     
 }
