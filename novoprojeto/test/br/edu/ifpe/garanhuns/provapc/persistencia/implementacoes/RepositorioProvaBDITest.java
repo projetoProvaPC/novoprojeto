@@ -6,10 +6,12 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes;
 
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
@@ -26,6 +28,11 @@ public class RepositorioProvaBDITest {
     private Prova p3 = null;
     private Prova p4 = new Prova("Segunda prova");
     private Prova p5 = null;
+    
+    @BeforeClass
+    public static void preparar() {
+        // seria bom apagar a tabela!
+    }
     
     /**
      * Adicionar
