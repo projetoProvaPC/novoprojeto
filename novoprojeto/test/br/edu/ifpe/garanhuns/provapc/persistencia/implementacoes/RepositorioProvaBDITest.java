@@ -22,16 +22,13 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class RepositorioProvaBDITest {
     
-    private RepositorioProva repositorio = new RepositorioProvaBD();
-    private Prova p1 = new Prova("Primeira prova");
-    private Prova p2 = null;
-    private Prova p3 = null;
-    private Prova p4 = new Prova("Segunda prova");
-    private Prova p5 = null;
+    public static RepositorioProva repositorio = null;
+    public static Prova prova = null;
     
     @BeforeClass
     public static void preparar() {
-        // seria bom apagar a tabela!
+        // TODO seria bom apagar a tabela!
+        repositorio = new RepositorioProvaBD();
     }
     
     /**
@@ -39,7 +36,8 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testAAdicionar() {
-        repositorio.adicionar(p1);
+        prova = new Prova("Primeira prova");
+        repositorio.adicionar(prova);
     }
     
     /**
@@ -47,19 +45,16 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testBPosAdicionarRecuperarTodos() {
+        assertNotNull(prova);
         List<Prova> recuperar = repositorio.recuperar();
-        boolean found = false;
         for(Prova p : recuperar){
-            if(p.getTitulo().equals(p1.getTitulo())){
-                found = true;
-                p1 = p;  // será usado no próximo método
-                assertEquals(p.getTitulo(), p1.getTitulo());
-                break;
+            if(prova.getTitulo().equals(p.getTitulo())){
+                assertEquals(p.getTitulo(), prova.getTitulo());
+                prova = p;  // será usado no próximo método
+                return;
             }
         }
-        if(!found) {
-            fail("Not found");
-        }
+        fail("Not found");
     }
     
     /**
@@ -67,7 +62,8 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testCPosAdicionarExisteId() {
-        long id = p1.getId();
+        assertNotNull(prova);
+        long id = prova.getId();
         assertTrue(repositorio.existe(id));
     }
     
@@ -76,7 +72,8 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testDPosAdicionarExisteObject() {
-        assertTrue(repositorio.existe(p1));
+        assertNotNull(prova);
+        assertTrue(repositorio.existe(prova));
     }
     
     /**
@@ -84,11 +81,12 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testEPosAdicionarRecuperarId() {
-        long id = p1.getId();
-        p2 = repositorio.recuperar(id);
-        assertNotNull(p2);
-        assertEquals(p2.getTitulo(), p1.getTitulo());
-        assertEquals(p2.getId(), p1.getId());
+        assertNotNull(prova);
+        long id = prova.getId();
+        Prova p = repositorio.recuperar(id);
+        assertNotNull(p);
+        assertEquals(p.getTitulo(), prova.getTitulo());
+        assertEquals(p.getId(), prova.getId());
     }
     
     /**
@@ -96,49 +94,31 @@ public class RepositorioProvaBDITest {
      */
     @Test
     public void testFAlterar() {
-        p1.setTitulo("Primeira Prova Atualizado");
-        repositorio.alterar(p1);
-    }
-    
-    /**
-     * Tenta recuperar todos e achar depois da alterar
-     */
-    @Test
-    public void testGPosAlterarRecuperarTodos() {
-        List<Prova> recuperar = repositorio.recuperar();
-        boolean found = false;
-        for(Prova p : recuperar){
-            if(p.getTitulo().equals(p1.getTitulo())){
-                found = true;
-                assertEquals(p.getTitulo(), p1.getTitulo());
-                assertEquals(p.getId(), p1.getId());
-                p1 = p;  // será usado no próximo método
-            }
-        }
-        if(!found) {
-            fail("Not found");
-        }
+        assertNotNull(prova);
+        prova.setTitulo("Primeira Prova Atualizado");
+        repositorio.alterar(prova);
     }
     
     /**
      * Tenta recuperar o que foi alterado pelo id
      */
     @Test
-    public void testHPosAlterarRecuperarId() {
-        long id = p1.getId();
-        p2 = repositorio.recuperar(id);
-        assertNotNull(p2);
-        assertEquals(p2.getTitulo(), p1.getTitulo());
-        assertEquals(p2.getId(), p1.getId());
+    public void testGPosAlterarRecuperarId() {
+        assertNotNull(prova);
+        long id = prova.getId();
+        Prova p = repositorio.recuperar(id);
+        assertNotNull(p);
+        assertEquals(p.getTitulo(), prova.getTitulo());
+        assertEquals(p.getId(), prova.getId());
     }
     
     /**
      * Agora remove
      */
     @Test 
-    public void testIRemoverId() {
-        assertNotNull(p2);
-        long id = p2.getId();
+    public void testHRemoverId() {
+        assertNotNull(prova);
+        long id = prova.getId();
         repositorio.remover(id);
     }
     
@@ -146,9 +126,9 @@ public class RepositorioProvaBDITest {
      * Não pode encontrar por id
      */
     @Test
-    public void testJPosRemoverIdExisteId() {
-        assertNotNull(p2);
-        long id = p2.getId();
+    public void testIPosRemoverIdExisteId() {
+        assertNotNull(prova);
+        long id = prova.getId();
         assertNull(repositorio.recuperar(id));
     }
     
@@ -156,38 +136,39 @@ public class RepositorioProvaBDITest {
      * Adiciono outro
      */
     @Test
-    public void testKAdicionar2() {
-        p1 = new Prova("Segunda prova");
-        repositorio.adicionar(p1);
+    public void testJAdicionar2() {
+        prova = new Prova("Segunda prova");
+        repositorio.adicionar(prova);
     }
     
     /**
      * Recuperar Todos depois de Adicionar de novo
      */
     @Test
-    public void testLPosAdicionar2RecuperarTodos() {
+    public void testKPosAdicionar2RecuperarTodos() {
+        assertNotNull(prova);
         List<Prova> recuperar = repositorio.recuperar();
-        boolean found = false;
         for(Prova p : recuperar){
-            if(p.getTitulo().equals(p1.getTitulo())){
-                found = true;
-                assertEquals(p.getTitulo(), p1.getTitulo());
-                p1 = p;  // será usado no próximo método
+            if(p.getTitulo().equals(prova.getTitulo())){
+                assertEquals(p.getTitulo(), prova.getTitulo());
+                prova = p;  // será usado no próximo método
+                return;
             }
         }
-        if(!found) {
-            fail("Not found");
-        }
+        prova=null;
+        fail("Not found");
     }
     
     @Test
-    public void testMRemoverObject() {
-        repositorio.remover(p1);
+    public void testLRemoverObject() {
+        assertNotNull(prova);
+        repositorio.remover(prova);
     }
     
     @Test
-    public void testNPosRemoverExisteObject() {
-        assertFalse(repositorio.existe(p1));
+    public void testMPosRemoverExisteObject() {
+        assertNotNull(prova);
+        assertFalse(repositorio.existe(prova));
     }
     
 }
