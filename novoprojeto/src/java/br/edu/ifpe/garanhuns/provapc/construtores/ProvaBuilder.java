@@ -28,6 +28,7 @@ public class ProvaBuilder {
     private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
     List<QuestaoBuilder> questoes = new ArrayList<>();
+    List<AlternativaBuilder> alternativas = new ArrayList<>();
     
     public ProvaBuilder() {
       //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
@@ -42,6 +43,7 @@ public class ProvaBuilder {
         QuestaoBuilder questao2 = new QuestaoBuilder();
         questoes.add(questao1);
         questoes.add(questao2);
+        
     }
     
     public String getTitulo() {
@@ -98,4 +100,21 @@ public class ProvaBuilder {
         return new Prova(id,titulo);
         
     }
+
+    public List<AlternativaBuilder> getAlternativas() {
+        return alternativas;
+    }
+
+    public void setAlternativas(List<AlternativaBuilder> alternativas) {
+        this.alternativas = alternativas;
+    }
+    
+    public boolean addAlternativa(AlternativaBuilder e){
+        return alternativas.add(e);
+    }
+    
+    public boolean removeAlternativa(AlternativaBuilder e){
+        return alternativas.remove(e);
+    }
+    
 }

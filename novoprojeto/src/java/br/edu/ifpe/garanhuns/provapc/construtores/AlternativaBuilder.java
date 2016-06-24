@@ -22,7 +22,7 @@ public class AlternativaBuilder {
     
     public AlternativaBuilder() {
     }
-
+    
     public long getId() {
         return id;
     }

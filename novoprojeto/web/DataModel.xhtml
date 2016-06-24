@@ -24,6 +24,15 @@
                         <p:inputText value="#{questao.pontuacao}"/>
                     </p:panelGrid>
                     <br></br>
+                     <p:panelGrid id="alternativas" columns="2" style="width:100%">
+                         <p:repeat value="#{controladorGeral.provaBuilder.alternativas}" var="alternativa" offset="0" size="#{controladorGeral.provaBuilder.alternativas.size}" step="1" varStatus="status">
+                            
+                           
+
+                           
+                        </p:repeat>
+                    </p:panelGrid>
+
                     <p:panelGrid columns="2">
                         <h:outputText value="id"/>
                         <p:inputText value="#{alternativaBuilder.id}"/>
@@ -33,7 +42,7 @@
                         <p:inputText value="#{alternativaBuilder.veracidade}"/>
                     </p:panelGrid>
                 </p:tab>
-               
+
             </p:accordionPanel>
             <br></br>
             <p:commandButton value="Adicionar Questão" action="#{controladorGeral.adicionarQuestao()}" update=":MyForm:Accordion"/>
