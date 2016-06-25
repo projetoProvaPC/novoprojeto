@@ -44,12 +44,13 @@ public class ControladorGeral {
         }
          return "ApresentarProva.xhtml";
     }
-     public void adicionarQuestao(){
+    
+    public void adicionarQuestao(){
          provaBuilder.addQuestao(new QuestaoBuilder());
          
-     }
+    }
      
-     public void adicionarAlternativa(){
-         provaBuilder.addAlternativa(new AlternativaBuilder());
-     }
+    public void adicionarAlternativa(QuestaoBuilder qb){
+         qb.addAlternativa(new AlternativaBuilder());
+    }
 }

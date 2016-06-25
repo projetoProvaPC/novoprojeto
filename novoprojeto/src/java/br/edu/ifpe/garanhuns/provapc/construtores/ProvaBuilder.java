@@ -24,8 +24,6 @@ public class ProvaBuilder {
     private boolean alterando = false;
     List<QuestaoBuilder> questoes = new ArrayList<>();
 
-    List<AlternativaBuilder> alternativas = new ArrayList<>();
-    
     public ProvaBuilder() {
         
     }
@@ -81,20 +79,5 @@ public class ProvaBuilder {
         
     }
 
-    public List<AlternativaBuilder> getAlternativas() {
-        return alternativas;
-    }
-
-    public void setAlternativas(List<AlternativaBuilder> alternativas) {
-        this.alternativas = alternativas;
-    }
-    
-    public boolean addAlternativa(AlternativaBuilder e){
-        return alternativas.add(e);
-    }
-    
-    public boolean removeAlternativa(AlternativaBuilder e){
-        return alternativas.remove(e);
-    }
     
 }

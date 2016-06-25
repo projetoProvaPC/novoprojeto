@@ -24,23 +24,22 @@
                         <p:inputText value="#{questao.pontuacao}"/>
                     </p:panelGrid>
                     <br></br>
-                     <p:panelGrid id="alternativas" columns="2" style="width:100%">
-                         <p:repeat value="#{controladorGeral.provaBuilder.alternativas}" var="alternativa" offset="0" size="#{controladorGeral.provaBuilder.alternativas.size}" step="1" varStatus="status">
-                            
-                           
-
-                           
-                        </p:repeat>
-                    </p:panelGrid>
-
-                    <p:panelGrid columns="2">
-                        <h:outputText value="id"/>
-                        <p:inputText value="#{alternativaBuilder.id}"/>
-                        <h:outputText value="Texto"/>
-                        <p:inputText value="#{alternativaBuilder.texto}"/>
-                        <h:outputText value="Veracidade"/>
-                        <p:inputText value="#{alternativaBuilder.veracidade}"/>
-                    </p:panelGrid>
+                    <h:panelGroup id="Alternativas">
+                        <table>
+                        <tr>
+                            <td><h:outputText value="Veracidade"/></td>
+                            <td><h:outputText value="Veracidade"/></td>
+                        </tr>
+                        <ui:repeat value="#{questoes.alternativas}" var="alternativa">
+                            <tr>
+                                <td><p:inputText value="#{alternativa.veracidade}"/></td>
+                                <td><p:inputText value="#{alternativa.texto}"/></td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+                    </h:panelGroup>
+                    
+                    <p:commandButton value="Adicionar Alternativa" action="#{controladorGeral.adicionarAlternativa(questao)}" update="Alternativas" />
                 </p:tab>
 
             </p:accordionPanel>
