@@ -5,13 +5,11 @@
  */
 package br.edu.ifpe.garanhuns.provapc.construtores;
 
-import br.edu.ifpe.garanhuns.provapc.controladores.ControladorProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -23,27 +21,19 @@ public class ProvaBuilder {
     
     private long id;
     private String titulo;
-    //@ManagedProperty (value="#{controladorProva}")
-    FacesContext faces = FacesContext.getCurrentInstance();
-    private ControladorProva controlador = (ControladorProva) faces.getApplication().evaluateExpressionGet(faces, "#{controladorProva}", ControladorProva.class);
     private boolean alterando = false;
     List<QuestaoBuilder> questoes = new ArrayList<>();
+
     List<AlternativaBuilder> alternativas = new ArrayList<>();
     
     public ProvaBuilder() {
-      //controlador = (ControladorProva)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).
-                //getAttribute("controladorProva");
-        Prova p = controlador.getAlterando();
-        if(p!=null) {
-            this.id = p.getId();
-            this.titulo = p.getTitulo();
-            this.alterando = true;
-        }
-        QuestaoBuilder questao1 = new QuestaoBuilder();
-        QuestaoBuilder questao2 = new QuestaoBuilder();
-        questoes.add(questao1);
-        questoes.add(questao2);
         
+    }
+
+    public ProvaBuilder(Prova selected) {
+        this.id = selected.getId();
+        this.titulo = selected.getTitulo();
+        this.alterando = true;
     }
     
     public String getTitulo() {
@@ -61,15 +51,6 @@ public class ProvaBuilder {
     public void setId(long id) {
         this.id = id;
     }
-
-    public ControladorProva getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(ControladorProva controlador) {
-        this.controlador = controlador;
-    }
-
     public boolean isAlterando() {
         return alterando;
     }
@@ -93,7 +74,6 @@ public class ProvaBuilder {
     public boolean removeQuestao(QuestaoBuilder o) {
         return questoes.remove(o);
     }
-    
     
     
     public Prova construir(){

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 /**
  *
  * @author Lucinaldo Melquíades Jr.
@@ -20,14 +21,24 @@ import javax.faces.bean.ManagedProperty;
 @RequestScoped
 public class QuestaoBuilder {
     
+    private long id;
     private String enunciado;
     private double pontuacao;
     private int tamanhoEspaco;
+    FacesContext faces = FacesContext.getCurrentInstance();
+    private ControladorQuestao controlador = (ControladorQuestao) faces.getApplication().evaluateExpressionGet(faces, "#{controladorQuestao}", ControladorQuestao.class);
+    private boolean alterando = false;
     
-    List<AlternativaBuilder> alternativa = new ArrayList();
-
     public QuestaoBuilder() {
+        Questao q = controlador.getAlterando();
+        if(q!=null) {
+            this.id = q.getId();
+            this.enunciado = q.getEnunciado();
+            this.pontuacao = q.getPontuacao();
+            this.alterando = true;
+        }
     }
+    List<AlternativaBuilder> alternativa = new ArrayList();
 
     public String getEnunciado() {
         return enunciado;
@@ -54,7 +65,7 @@ public class QuestaoBuilder {
     }
     
     public Questao construir() {
-        return new Questao(enunciado,pontuacao,tamanhoEspaco);
+        return new Questao(id,enunciado,pontuacao,tamanhoEspaco);
     }
     
 }

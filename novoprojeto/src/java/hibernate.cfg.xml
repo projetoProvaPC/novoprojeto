@@ -11,5 +11,7 @@
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Prova"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Questao"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Alternativa"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Aluno"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Professor"/>
   </session-factory>
 </hibernate-configuration>

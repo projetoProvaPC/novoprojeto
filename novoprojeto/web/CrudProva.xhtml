@@ -10,12 +10,12 @@
     </h:head>
     <h:body>
         <h:form id="FormProva">
-            
-         <ui:include src="Menu.xhtml"/>
+
+            <ui:include src="Menu.xhtml"/>
             <p:dataTable id="table"
                          var="prova"
                          value="#{controladorProva.recuperarTodos()}"
-                         
+
                          selectionMode="single"
                          selection="#{controladorProva.selected}"
                          rowKey="#{prova.id}">
@@ -29,12 +29,23 @@
                     <h:outputText value="#{prova.titulo}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton value="Adicionar" action="CadastrarProva.xhtml"/>
+                    <p:commandButton value="Adicionar" oncomplete="PF('createDialog').show()" action="#{controladorProva.criarBuilder()}" update=":FormProva:createDialog"/>
                     <p:commandButton value="Atualizar Página" oncomplete=":FromProva:table"/>
                     <p:commandButton value="Remover" oncomplete=":FromProva:table" action="#{controladorProva.remover()}"/>
-                    <p:commandButton value="Alterar" action="#{controladorProva.alterar()}"/>
+                    <p:commandButton value="Alterar" oncomplete="PF('createDialog').show()" action="#{controladorProva.alterarBuilder()}" update=":FormProva:createDialog"/>
                 </f:facet>
             </p:dataTable>
+
+            <p:dialog header="#{controladorProva.dialogName}" modal="true" id="createDialog" widgetVar="createDialog" >
+                <p:fieldset legend="Cadastrar Prova">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Título"/>
+                        <p:inputText value="#{controladorProva.builder.titulo}"/>
+                        <p:commandButton value="Cadastrar" action="#{controladorProva.adicionar()}" oncomplete="PF('createDialog').hide()b"/>
+                    </p:panelGrid>
+                </p:fieldset>
+            </p:dialog>
+
         </h:form>
     </h:body>
 </html>
