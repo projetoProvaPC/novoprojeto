@@ -28,6 +28,7 @@ public class QuestaoBuilder {
     FacesContext faces = FacesContext.getCurrentInstance();
     private ControladorQuestao controlador = (ControladorQuestao) faces.getApplication().evaluateExpressionGet(faces, "#{controladorQuestao}", ControladorQuestao.class);
     private boolean alterando = false;
+    List<AlternativaBuilder> alternativas = new ArrayList<>();
     
     public QuestaoBuilder() {
         Questao q = controlador.getAlterando();
@@ -37,6 +38,8 @@ public class QuestaoBuilder {
             this.pontuacao = q.getPontuacao();
             this.alterando = true;
         }
+        alternativas.add(new AlternativaBuilder());
+        alternativas.add(new AlternativaBuilder());
     }
     List<AlternativaBuilder> alternativa = new ArrayList();
 
@@ -66,6 +69,22 @@ public class QuestaoBuilder {
     
     public Questao construir() {
         return new Questao(id,enunciado,pontuacao,tamanhoEspaco);
+    }
+    
+    public List<AlternativaBuilder> getAlternativas() {
+        return alternativas;
+    }
+
+    public void setAlternativas(List<AlternativaBuilder> alternativas) {
+        this.alternativas = alternativas;
+    }
+    
+    public boolean addAlternativa(AlternativaBuilder e){
+        return alternativas.add(e);
+    }
+    
+    public boolean removeAlternativa(AlternativaBuilder e){
+        return alternativas.remove(e);
     }
     
 }

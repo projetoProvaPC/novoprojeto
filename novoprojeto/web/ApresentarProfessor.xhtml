@@ -10,6 +10,7 @@
     </h:head>
     <h:body>
         <h:form>
+            <ui:include src="Menu.xhtml"/>
             <p:dataTable id="table"
                          value="#{controladorProfessor.recuperarTodos()}" 
                          var="professor" 

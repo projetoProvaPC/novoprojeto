@@ -26,44 +26,28 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
         
     }
     
-    private RepositorioProva provas = null;
-    private RepositorioQuestao questoes = null;
-    private RepositorioAlternativa alternativas = null;
-    private RepositorioAluno alunos = null;
-    private RepositorioProfessor professores = null;
-    
     @Override
-    public RepositorioProva getRepositorioProva() {
-        if(provas==null)
-            provas = new RepositorioProvaMemoria();
-        return provas;
+    public RepositorioProva newRepositorioProva() {
+        return new RepositorioProvaMemoria();
     }
 
     @Override
-    public RepositorioAlternativa getRepositorioAlternativa() {
-        if(alternativas==null)
-            alternativas = new RepositorioAlternativaMemoria();
-        return alternativas;
+    public RepositorioAlternativa newRepositorioAlternativa() {
+        return new RepositorioAlternativaMemoria();
     }
 
     @Override
-    public RepositorioQuestao getRepositorioQuestao() {
-        if(questoes==null)
-            questoes = new RepositorioQuestaoMemoria();
-        return questoes;
+    public RepositorioQuestao newRepositorioQuestao() {
+        return new RepositorioQuestaoMemoria();
     }
 
     @Override
-    public RepositorioAluno getRepositorioAluno() {
-        if(alunos==null)
-            alunos = new RepositorioAlunoMemoria();
-        return alunos;
+    public RepositorioAluno newRepositorioAluno() {
+        return new RepositorioAlunoMemoria();
     }
 
     @Override
-    public RepositorioProfessor getRepositorioProfessor() {
-        if(professores==null)
-            professores = new RepositorioProfessorMemoria();
-        return professores;
+    public RepositorioProfessor newRepositorioProfessor() {
+        return new RepositorioProfessorMemoria();
     }
 }

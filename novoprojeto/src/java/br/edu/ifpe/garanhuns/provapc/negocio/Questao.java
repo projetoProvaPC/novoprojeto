@@ -152,8 +152,14 @@ public class Questao implements Persistivel<Questao> {
         }
         return q;
     }
-    
-    
+
+    public List<Alternativa> getAlternativas() {
+        return alternativas;
+    }
+
+    public void setAlternativas(List<Alternativa> alternativas) {
+        this.alternativas = alternativas;
+    }
     
 }
             

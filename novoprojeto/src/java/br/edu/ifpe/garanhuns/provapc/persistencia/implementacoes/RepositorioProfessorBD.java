@@ -14,10 +14,5 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfesso
  * @author Lucinaldo Melquíades Jr.
  */
 public class RepositorioProfessorBD extends RepositorioBD<Professor> implements RepositorioProfessor{
-
-    @Override
-    protected String getClasse() {
-        return "Professor";
-    }
     
 }
