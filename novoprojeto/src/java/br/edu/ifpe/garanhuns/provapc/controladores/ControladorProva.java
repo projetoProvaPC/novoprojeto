@@ -105,4 +105,8 @@ public class ControladorProva {
         this.adicionar(this.builder.construir());
         criarBuilder();
     }
+    
+    public String responder(){
+        return "ResponderProva.xhtml";
+    }
 }

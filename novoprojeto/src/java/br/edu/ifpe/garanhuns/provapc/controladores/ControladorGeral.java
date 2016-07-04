@@ -53,4 +53,5 @@ public class ControladorGeral {
     public void adicionarAlternativa(QuestaoBuilder qb){
          qb.addAlternativa(new AlternativaBuilder());
     }
+    
 }

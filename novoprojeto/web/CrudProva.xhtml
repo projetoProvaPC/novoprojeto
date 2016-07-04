@@ -33,6 +33,7 @@
                     <p:commandButton value="Atualizar Página" oncomplete=":FromProva:table"/>
                     <p:commandButton value="Remover" oncomplete=":FromProva:table" action="#{controladorProva.remover()}"/>
                     <p:commandButton value="Alterar" oncomplete="PF('createDialog').show()" action="#{controladorProva.alterarBuilder()}" update=":FormProva:createDialog"/>
+                    <p:commandButton value="Responder" action="#{controladorProva.responder()}"/>
                 </f:facet>
             </p:dataTable>
 
