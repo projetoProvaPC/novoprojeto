@@ -16,7 +16,7 @@
             </p:panelGrid>
 
             <p:accordionPanel id="Accordion" value="#{controladorGeral.provaBuilder.questoes}" var="questao">
-                <p:tab title="Questao N - Começo do texto">
+                <p:tab title="Questão #{controladorGeral.provaBuilder.questoes.indexOf(questao) + 1} - Começo do texto">
                     <p:panelGrid columns="2">
                         <h:outputText value="Enunciado"/>
                         <p:inputText value="#{questao.enunciado}"/>
@@ -24,16 +24,24 @@
                         <p:inputText value="#{questao.pontuacao}"/>
                     </p:panelGrid>
                     <br></br>
-                    <p:panelGrid columns="2">
-                        <h:outputText value="id"/>
-                        <p:inputText value="#{alternativaBuilder.id}"/>
-                        <h:outputText value="Texto"/>
-                        <p:inputText value="#{alternativaBuilder.texto}"/>
-                        <h:outputText value="Veracidade"/>
-                        <p:inputText value="#{alternativaBuilder.veracidade}"/>
-                    </p:panelGrid>
+                    <h:panelGroup id="Alternativas">
+                        <table>
+                        <tr>
+                            <td><h:outputText value="Veracidade"/></td>
+                            <td><h:outputText value="Veracidade"/></td>
+                        </tr>
+                        <ui:repeat value="#{questoes.alternativas}" var="alternativa">
+                            <tr>
+                                <td><p:inputText value="#{alternativa.veracidade}"/></td>
+                                <td><p:inputText value="#{alternativa.texto}"/></td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+                    </h:panelGroup>
+                    
+                    <p:commandButton value="Adicionar Alternativa" action="#{controladorGeral.adicionarAlternativa(questao)}" update="Alternativas" />
                 </p:tab>
-               
+
             </p:accordionPanel>
             <br></br>
             <p:commandButton value="Adicionar Questão" action="#{controladorGeral.adicionarQuestao()}" update=":MyForm:Accordion"/>

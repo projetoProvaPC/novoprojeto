@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,17 +14,30 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Thais
+ * @author Thais, Lucinaldo Melquíades Jr.
  */
 @Entity
 @Table
-public class Professor {
+public class Professor implements Persistivel<Professor>{
     
     @Id
     @GeneratedValue
     private long id;
     @Column
-    private int siap;
+    private int siape;
+    @Column
+    private String nome;
+
+    public Professor(long id, int siap, String nome) {
+        this.id = id;
+        this.siape = siap;
+        this.nome = nome;
+    }
+
+    public Professor(int siap, String nome) {
+        this.siape = siap;
+        this.nome = nome;
+    }
 
     public Professor() {
     }
@@ -36,19 +50,27 @@ public class Professor {
         this.id = id;
     }
 
-    public int getSiap() {
-        return siap;
+    public int getSiape() {
+        return siape;
     }
 
-    public void setSiap(int siap) {
-        this.siap = siap;
+    public void setSiape(int siape) {
+        this.siape = siape;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 29 * hash + this.siap;
+        hash = 29 * hash + this.siape;
         return hash;
     }
 
@@ -67,7 +89,7 @@ public class Professor {
         if (this.id != other.id) {
             return false;
         }
-        if (this.siap != other.siap) {
+        if (this.siape != other.siape) {
             return false;
         }
         return true;
@@ -75,7 +97,18 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" + "id=" + id + ", siap=" + siap + '}';
+        return "Professor{" + "id=" + id + ", siap=" + siape + '}';
+    }
+
+    @Override
+    public void alterar(Professor t) {
+        this.setSiape(t.getSiape());
+        this.setNome(t.getNome());
+    }
+
+    @Override
+    public Professor copiar() {
+        return new Professor (siape,nome);
     }
     
     

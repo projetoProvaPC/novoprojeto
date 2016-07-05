@@ -5,14 +5,15 @@
  */
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
+
+import br.edu.ifpe.garanhuns.provapc.construtores.AlternativaBuilder;
 import br.edu.ifpe.garanhuns.provapc.construtores.ProvaBuilder;
 import br.edu.ifpe.garanhuns.provapc.construtores.QuestaoBuilder;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
-import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 
 /**
@@ -20,6 +21,7 @@ import javax.faces.bean.ManagedBean;
  * @author Thais
  */
 @ManagedBean
+@SessionScoped
 public class ControladorGeral {
     
     private ProvaBuilder provaBuilder = new ProvaBuilder();
@@ -42,8 +44,13 @@ public class ControladorGeral {
         }
          return "ApresentarProva.xhtml";
     }
-     public void adicionarQuestao(){
+    
+    public void adicionarQuestao(){
          provaBuilder.addQuestao(new QuestaoBuilder());
          
-     }
+    }
+     
+    public void adicionarAlternativa(QuestaoBuilder qb){
+         qb.addAlternativa(new AlternativaBuilder());
+    }
 }

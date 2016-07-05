@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
+import br.edu.ifpe.garanhuns.provapc.construtores.ProvaBuilder;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
@@ -22,7 +23,8 @@ public class ControladorProva {
     private Prova alterando = null;
     private Prova selected = null;
     private final RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
-
+    private ProvaBuilder builder = new ProvaBuilder();
+    
     public ControladorProva() {
     }
     public void remover() {
@@ -75,4 +77,32 @@ public class ControladorProva {
         this.alterando = alterando;
     }
     
+    public String getDialogName() {
+        if(alterando != null) {
+            return "Alterando";
+        } else {
+            return "Criando";
+        }
+    }
+
+    public ProvaBuilder getBuilder() {
+        return builder;
+    }
+
+    public void setBuilder(ProvaBuilder builder) {
+        this.builder = builder;
+    }
+    
+    public void criarBuilder() {
+        this.setBuilder(new ProvaBuilder());
+    }
+    
+    public void alterarBuilder() {
+        this.setBuilder(new ProvaBuilder(this.selected));
+    }
+    
+    public void adicionar() {
+        this.adicionar(this.builder.construir());
+        criarBuilder();
+    }
 }

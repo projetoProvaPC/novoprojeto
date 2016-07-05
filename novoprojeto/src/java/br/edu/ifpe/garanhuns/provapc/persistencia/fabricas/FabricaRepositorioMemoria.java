@@ -6,10 +6,14 @@
 package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlternativaMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlunoMemoria;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProfessorMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
@@ -24,37 +28,27 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
         
     }
     
-    private RepositorioProva provas = null;
-    private RepositorioQuestao questoes = null;
-    private RepositorioAlternativa alternativas = null;
-    private RepositorioUsuario usuario = null;
-    
     @Override
-    public RepositorioProva getRepositorioProva() {
-        if(provas==null)
-            provas = new RepositorioProvaMemoria();
-        return provas;
+    public RepositorioProva newRepositorioProva() {
+        return new RepositorioProvaMemoria();
     }
 
     @Override
-    public RepositorioAlternativa getRepositorioAlternativa() {
-        if(alternativas==null)
-            alternativas = new RepositorioAlternativaMemoria();
-        return alternativas;
+    public RepositorioAlternativa newRepositorioAlternativa() {
+        return new RepositorioAlternativaMemoria();
     }
 
     @Override
-    public RepositorioQuestao getRepositorioQuestao() {
-        if(questoes==null)
-            questoes = new RepositorioQuestaoMemoria();
-        return questoes;
+    public RepositorioQuestao newRepositorioQuestao() {
+        return new RepositorioQuestaoMemoria();
     }
-    
     @Override
-    public RepositorioUsuario getRepositorioUsuario() {
-        if(usuario==null)
-            usuario = new RepositorioUsuarioBD();
-        return usuario;
+    public RepositorioAluno newRepositorioAluno() {
+        return new RepositorioAlunoMemoria();
     }
-    
+
+    @Override
+    public RepositorioProfessor newRepositorioProfessor() {
+        return new RepositorioProfessorMemoria();
+    }
 }

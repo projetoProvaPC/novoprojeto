@@ -9,6 +9,7 @@ package br.edu.ifpe.garanhuns.provapc.persistencia.genericos;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Repositorio;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ import java.util.List;
 public abstract class RepositorioBD<T extends Persistivel> implements Repositorio<T>{
 
     protected DaoManagerHiber dao = DaoManagerHiber.getInstance();
+    private final String name =  ((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getName();
     
     @Override
     public void adicionar(T t){
@@ -38,7 +40,9 @@ public abstract class RepositorioBD<T extends Persistivel> implements Repositori
 
     @Override
     public T recuperar(long id) {
-        return (T) dao.recover("from "+ getClasse() + " where id=" + id).get(0);
+        List recovered = dao.recover("from "+ getClasse() + " where id=" + id);
+        if(recovered.isEmpty()) return null;
+        return (T) recovered.get(0);
     }
 
     @Override
@@ -46,6 +50,8 @@ public abstract class RepositorioBD<T extends Persistivel> implements Repositori
         return (List<T>) dao.recover("from "+ getClasse() );
     }
     
-    protected abstract String getClasse();
+    private String getClasse() {
+        return name;
+    }
     
 }
