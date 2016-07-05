@@ -8,6 +8,7 @@ package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
  * Use para conseguir repositórios. Caso queira alterar de Memoria para BD ou outra coisa, mude dentro do método getInstance.
@@ -40,4 +41,9 @@ public abstract class FabricaRepositorio {
      * @return repositório para questões.
      */
     public abstract RepositorioQuestao getRepositorioQuestao();
+    /**
+     * Retorna um repositório para usuário
+     * @return repositório para usuário.
+     */
+    public abstract RepositorioUsuario getRepositorioUsuario();
 }

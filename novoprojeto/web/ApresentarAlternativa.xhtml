@@ -11,14 +11,25 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Apresentar Alternativa</title>
+        <title>Apresentar Alternativas</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id ="FormAlternativa">
             
             <ui:include src="Menu.xhtml"/>
             
-            <p:dataTable value="#{controladorAlternativa.recuperarTodos()}" var="alternativa">
+            <p:dataTable id="table" 
+                        value="#{controladorAlternativa.recuperarTodos()}" 
+                        var="alternativa"
+                        
+                        selectionMode="Single"
+                        selection="#{controladorAlternativa.selected}"
+                        rowKey="#{alternativa.id}">
+                
+                <f:facet name="header">
+                    <h:outputText value="Apresenta Alternativas"/>
+                </f:facet>
+                
                 <p:column headerText="id">
                     <h:outputText value="#{alternativa.id}"/>
                 </p:column>
@@ -28,6 +39,13 @@ and open the template in the editor.
                 <p:column headerText="Veracidade">
                     <h:outputText value="#{alternativa.veracidade}"/>
                 </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton value="Adicionar" action="CadastrarAlternativa.xhtml"/>
+                    <p:commandButton value="Atualizar Página" oncomplete=":FromAlternativa:table"/>
+                    <p:commandButton value="Remover" oncomplete=":FromAlternativa:table" action="#{controladorAlternativa.remover()}"/>
+                    <p:commandButton value="Alterar" action="#{controladorAlternativa.alterar()}"/>
+                </f:facet>
             </p:dataTable>
         </h:form>
     </h:body>

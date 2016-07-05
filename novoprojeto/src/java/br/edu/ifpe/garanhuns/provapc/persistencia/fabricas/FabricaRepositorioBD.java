@@ -8,9 +8,11 @@ package br.edu.ifpe.garanhuns.provapc.persistencia.fabricas;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlternativaBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
  *
@@ -25,6 +27,7 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     private RepositorioProva provas = null;
     private RepositorioQuestao questoes = null;
     private RepositorioAlternativa alternativas = null;
+    private RepositorioUsuario usuario = null;
     
     @Override
     public RepositorioProva getRepositorioProva() {
@@ -47,4 +50,10 @@ class FabricaRepositorioBD extends FabricaRepositorio {
         return questoes;
     }
     
+     @Override
+    public RepositorioUsuario getRepositorioUsuario() {
+        if(usuario==null)
+            usuario = new RepositorioUsuarioBD();
+        return usuario;
+    }
 }

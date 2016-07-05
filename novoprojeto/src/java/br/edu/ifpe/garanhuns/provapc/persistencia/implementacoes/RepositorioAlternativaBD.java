@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author LUCINALDO
+ * @author João Witor
  */
 public class RepositorioAlternativaBD implements RepositorioAlternativa {
     private final DaoManagerHiber dao = DaoManagerHiber.getInstance();
@@ -31,6 +31,7 @@ public class RepositorioAlternativaBD implements RepositorioAlternativa {
         dao.update(a);
     }
     @Override
+    
     public Alternativa recuperar(long id){
         return (Alternativa) dao.recover("from Alternativa where id="+id).get(0);
     }
