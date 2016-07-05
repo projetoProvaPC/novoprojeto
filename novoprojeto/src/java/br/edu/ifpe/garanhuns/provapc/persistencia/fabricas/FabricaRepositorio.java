@@ -33,6 +33,7 @@ public abstract class FabricaRepositorio {
     private RepositorioAlternativa alternativas = null;
     private RepositorioProfessor professores = null;
     private RepositorioAluno alunos = null;
+    private RepositorioUsuario usuarios = null;
     
     /**
      * Isso vai lhe dar uma Fábrica de Repositórios.
@@ -90,6 +91,12 @@ public abstract class FabricaRepositorio {
         return alunos;
     }
     
+     public final RepositorioUsuario getRepositorioUsuario(){
+        if(usuarios==null)
+            usuarios = newRepositorioUsuario();
+        return usuarios;
+    }
+    
     // Métodos abstratos (protegidos)
     /**
      * Retorna um repositório para provas novo
@@ -116,6 +123,11 @@ public abstract class FabricaRepositorio {
      * @return repostório professor
      */
     public abstract RepositorioProfessor newRepositorioProfessor();
+     /**
+     * Retorna um novo repositório de usuario
+     * @return repostório usuario
+     */
+    public abstract RepositorioUsuario newRepositorioUsuario();
     
     /**
      * Retorna um repositório para a classe desejada.

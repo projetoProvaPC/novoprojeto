@@ -11,6 +11,7 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProf
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioMemoria;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
@@ -50,5 +51,10 @@ class FabricaRepositorioMemoria extends FabricaRepositorio {
     @Override
     public RepositorioProfessor newRepositorioProfessor() {
         return new RepositorioProfessorMemoria();
+    }
+    
+    @Override
+    public RepositorioUsuario newRepositorioUsuario() {
+        return new RepositorioUsuarioMemoria();
     }
 }

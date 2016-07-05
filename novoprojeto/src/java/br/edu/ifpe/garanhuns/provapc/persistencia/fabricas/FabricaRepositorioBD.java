@@ -50,4 +50,8 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     public RepositorioProfessor newRepositorioProfessor() {
         return new RepositorioProfessorBD();
     }
+    @Override
+    public RepositorioUsuario newRepositorioUsuario() {
+        return new RepositorioUsuarioBD();
+    }
 }
