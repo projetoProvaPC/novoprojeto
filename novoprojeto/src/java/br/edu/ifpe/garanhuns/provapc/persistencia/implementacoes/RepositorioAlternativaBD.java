@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author LUCINALDO
+ * @author João Witor
  */
 public class RepositorioAlternativaBD extends RepositorioBD<Alternativa> implements RepositorioAlternativa  {
     

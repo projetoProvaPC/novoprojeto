@@ -10,15 +10,14 @@ import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 /**
  *
  * @author Lucinaldo Melquíades Jr.
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class QuestaoBuilder {
     
     private long id;
@@ -41,7 +40,6 @@ public class QuestaoBuilder {
         alternativas.add(new AlternativaBuilder());
         alternativas.add(new AlternativaBuilder());
     }
-    List<AlternativaBuilder> alternativa = new ArrayList();
 
     public String getEnunciado() {
         return enunciado;

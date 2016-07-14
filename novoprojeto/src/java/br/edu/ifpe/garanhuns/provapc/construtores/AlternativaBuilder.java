@@ -6,14 +6,14 @@
 package br.edu.ifpe.garanhuns.provapc.construtores;
 import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author João Witor
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class AlternativaBuilder {
      private long id;
      private String texto;

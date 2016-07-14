@@ -10,18 +10,21 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Cadastro Alternativa</title>
+        <title>Cadastro Usuário</title>
     </h:head>
     <h:body>
-        <h:form id="FormAlternativa">
+        <h:form id="FormUsuario">
             <ui:include src="Menu.xhtml"/>
-            <p:fieldset legend="Cadastrar Alternativa">
+            <p:fieldset legend="Cadastrar Usuario">
                 <p:panelGrid columns="2">
-                    <h:outputText value="Texto"/>
-                    <p:inputText value="#{alternativaBuilder.texto}"/>
-                    <h:outputText value="Veracidade"/>
-                    <p:inputText value="#{alternativaBuilder.veracidade}"/>
-                    <p:commandButton value="Cadastrar" action="#{controladorAlternativa.adicionar(alternativaBuilder.construir())}"/>
+                    <h:outputText value="Login"/>
+                    <p:inputText value="#{usuarioBuilder.login}"/>
+                    <h:outputText value="Senha"/>
+                    <p:inputText value="#{usuarioBuilder.senha}"/>
+                    <h:outputText value="Perfil"/>
+                    <p:inputText value="#{usuarioBuilder.perfil}"/>
+                                 
+                    <p:commandButton value="Cadastrar" action="#{controladorUsuario.adicionar(usuarioBuilder.construir())}"/>
                 </p:panelGrid>
                 
             </p:fieldset>

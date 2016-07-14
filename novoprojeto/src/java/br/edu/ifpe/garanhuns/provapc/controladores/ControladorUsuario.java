@@ -5,9 +5,9 @@
  */
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
-import br.edu.ifpe.garanhuns.provapc.negocio.Alternativa;
+import br.edu.ifpe.garanhuns.provapc.negocio.Usuario;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
-import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,64 +16,65 @@ import javax.faces.bean.SessionScoped;
  *
  * @author João Witor
  */
+
 @ManagedBean (eager =true)
 @SessionScoped
-public class ControladorAlternativa {
-    private Alternativa alterando = null;
-    private Alternativa selected = null;
-    private final RepositorioAlternativa repositorio = FabricaRepositorio.getFabrica().getRepositorioAlternativa();
+public class ControladorUsuario {
+    private Usuario alterando = null;
+    private Usuario selected = null;
+    private final RepositorioUsuario repositorio = FabricaRepositorio.getFabrica().getRepositorioUsuario();
     
-    public ControladorAlternativa() {
+    public ControladorUsuario() {
     }
     
     public void remover() {
         remover(selected);
     }
     
-     public String adicionar(Alternativa a) {
+     public String adicionar(Usuario a) {
         if(repositorio.existe(a.getId())) {
             repositorio.alterar(a);
         } else {
             repositorio.adicionar(a);
         }
-        return "ApresentarAlternativa.xhtml";
+        return "ApresentarUsuario.xhtml";
     }
      
      public String alterar() {
         this.alterando = selected;
-        return "CadastrarAlternativa.xhtml";
+        return "CadastrarUsuario.xhtml";
     }
     
     
-    public void remover(Alternativa a) {
+    public void remover(Usuario a) {
         repositorio.remover(a);
     }
 
-    public void alterar(Alternativa a) {
+    public void alterar(Usuario a) {
         repositorio.alterar(a);
     }
 
-    public Alternativa recuperar(long id) {
+    public Usuario recuperar(long id) {
         return repositorio.recuperar(id);
     }
 
-    public List<Alternativa> recuperarTodos() {
+    public List<Usuario> recuperarTodos() {
         return repositorio.recuperar();
     }
 
-    public Alternativa getSelected() {
+    public Usuario getSelected() {
         return selected;
     }
 
-    public void setSelected(Alternativa selected) {
+    public void setSelected(Usuario selected) {
         this.selected = selected;
     }
 
-    public Alternativa getAlterando() {
+    public Usuario getAlterando() {
         return alterando;
     }
 
-    public void setAlterando(Alternativa alterando) {
+    public void setAlterando(Usuario alterando) {
         this.alterando = alterando;
     }
 }
