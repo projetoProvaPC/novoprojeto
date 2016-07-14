@@ -36,7 +36,7 @@ public class ControladorProfessor {
         } else {
             repositorio.adicionar(p);
         }
-        return "ApresentarAluno.xhtml";
+        return "ApresentarProfessor.xhtml";
     }
     
     public void remover(Professor p) {

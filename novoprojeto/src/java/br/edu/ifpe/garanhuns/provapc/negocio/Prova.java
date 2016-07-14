@@ -44,6 +44,10 @@ public class Prova implements Persistivel<Prova> {
     public Prova() {
     }
 
+    public Prova(String titulo) {
+        this.titulo = titulo;
+    }
+    
     public Prova(long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
@@ -86,9 +90,6 @@ public class Prova implements Persistivel<Prova> {
             return false;
         }
         final Prova other = (Prova) obj;
-        if (this.id != other.id) {
-            return false;
-        }
         if (!Objects.equals(this.titulo, other.titulo)) {
             return false;
         }

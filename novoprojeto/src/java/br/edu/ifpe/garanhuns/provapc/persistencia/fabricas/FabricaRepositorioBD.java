@@ -10,11 +10,13 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioAlun
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProfessorBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioProvaBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioQuestaoBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioUsuarioBD;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAlternativa;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
  *
@@ -25,7 +27,6 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     protected FabricaRepositorioBD() {
         
     }
-    
     @Override
     public RepositorioProva newRepositorioProva() {
         return new RepositorioProvaBD();
@@ -40,6 +41,7 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     public RepositorioQuestao newRepositorioQuestao() {
         return new RepositorioQuestaoBD();
     }
+
     @Override
     public RepositorioAluno newRepositorioAluno() {
         return new RepositorioAlunoBD();
@@ -47,5 +49,9 @@ class FabricaRepositorioBD extends FabricaRepositorio {
     @Override
     public RepositorioProfessor newRepositorioProfessor() {
         return new RepositorioProfessorBD();
+    }
+    @Override
+    public RepositorioUsuario newRepositorioUsuario() {
+        return new RepositorioUsuarioBD();
     }
 }
