@@ -42,7 +42,7 @@ public class ControladorGeral {
         } else {
             repositorio.adicionar(p);
         }
-         return "ApresentarProva.xhtml";
+         return "CrudProva.xhtml";
     }
     
     public void adicionarQuestao(){

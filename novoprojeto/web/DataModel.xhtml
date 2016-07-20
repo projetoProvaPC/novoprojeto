@@ -12,7 +12,7 @@
             <ui:include src="Menu.xhtml"/>
             <p:panelGrid columns="2">
                 <h:outputText value="Título"/>
-                <p:inputText value="#{provaBuilder.titulo}"/>
+                <p:inputText value="#{controladorGeral.provaBuilder.titulo}"/>
             </p:panelGrid>
 
             <p:accordionPanel id="AccordionQuestoes" value="#{controladorGeral.provaBuilder.questoes}" var="questao">

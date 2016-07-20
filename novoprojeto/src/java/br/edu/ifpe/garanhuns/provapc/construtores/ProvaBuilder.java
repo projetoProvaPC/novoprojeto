@@ -75,7 +75,11 @@ public class ProvaBuilder {
     
     
     public Prova construir(){
-        return new Prova(id,titulo);
+        Prova novaProva = new Prova(id,titulo);
+        for(QuestaoBuilder q : this.questoes){
+            novaProva.adicionarQuestao(q.construir());
+        }
+        return novaProva;
         
     }
 
