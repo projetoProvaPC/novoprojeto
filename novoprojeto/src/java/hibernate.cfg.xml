@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/provapc</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/provapc2</property>
     <property name="hibernate.connection.username">projetoprovapc</property>
     <property name="hibernate.connection.password">senhappp</property>
     
@@ -13,5 +13,7 @@
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Alternativa"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Aluno"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Professor"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.RespostaProva"/>
+    <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.RespostaQuestao"/>
   </session-factory>
 </hibernate-configuration>

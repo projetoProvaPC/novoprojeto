@@ -6,7 +6,6 @@
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.CascadeType;
@@ -38,6 +37,10 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     @OneToMany(cascade = CascadeType.ALL)
     private final Map<Questao, RespostaQuestao> respostas;
 
+    public RespostaProva() {
+        this.respostas = new HashMap<>();
+    }
+
     public RespostaProva(long id, Prova prova) {
         this.id = id;
         this.prova = prova;
@@ -45,7 +48,8 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     }
 
     public RespostaProva(Prova prova) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this();
+        this.prova = prova;
     }
 
     public double calculaPontuaçao() {
@@ -73,4 +77,15 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     public RespostaProva copiar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Prova getProva() {
+        return prova;
+    }
+
+    public void setProva(Prova prova) {
+        this.prova = prova;
+    }
+    
+    
+    
 }
