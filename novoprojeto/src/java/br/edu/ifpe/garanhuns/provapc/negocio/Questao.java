@@ -9,8 +9,10 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -33,7 +35,7 @@ public class Questao implements Persistivel<Questao> {
     @Column
     private int tamanhoEspaco;
     
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Alternativa> alternativas= new ArrayList<>();
 
     public Questao(String enunciado, double pontuacao, int tamanhoEspaco) {

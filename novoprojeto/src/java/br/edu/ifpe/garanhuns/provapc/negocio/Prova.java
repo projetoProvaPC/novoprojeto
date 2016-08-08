@@ -12,6 +12,7 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -30,7 +31,7 @@ public class Prova implements Persistivel<Prova> {
     @Column
     private String titulo;
     
-    @OneToMany ( cascade = CascadeType.ALL )
+    @OneToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Questao> questoes = new ArrayList<>();
 
     public long getId() {

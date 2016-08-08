@@ -5,30 +5,24 @@
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Thais
  */
-@Entity
-@Table
-public class RespostaAlunoProva {
+public class RespostaAlternativa {
     
     @Id
     @GeneratedValue
     private long id;
+    @Column
+    private Alternativa alternativa;
+    @Column
+    private boolean resposta;
     
-    List<RespostasAlunoQuestao> Respostas = new ArrayList<>();
-             
-       public double calculaPontuaçao(){
-           return 1;
-    }
 
     public long getId() {
         return id;
@@ -37,6 +31,23 @@ public class RespostaAlunoProva {
     public void setId(long id) {
         this.id = id;
     }
+
+    public Alternativa getAlternativa() {
+        return alternativa;
+    }
+
+    public void setAlternativa(Alternativa alternativa) {
+        this.alternativa = alternativa;
+    }
+
+    public boolean isResposta() {
+        return resposta;
+    }
+
+    public void setResposta(boolean resposta) {
+        this.resposta = resposta;
+    }
+    
     
     
 }

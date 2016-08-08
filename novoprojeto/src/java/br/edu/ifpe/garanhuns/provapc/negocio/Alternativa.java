@@ -100,7 +100,8 @@ public class Alternativa implements Persistivel<Alternativa>{
 
     @Override
     public String toString() {
-        return "Alternativa{" + "id=" + id + ", texto=" + texto + ", veracidade=" + veracidade + '}';
+        //return "Alternativa{" + "id=" + id + ", texto=" + texto + ", veracidade=" + veracidade + '}';
+        return texto;
     }
 
     @Override

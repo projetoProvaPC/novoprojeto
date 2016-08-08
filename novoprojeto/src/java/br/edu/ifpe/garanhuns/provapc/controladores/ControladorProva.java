@@ -12,6 +12,7 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.hibernate.Hibernate;
 
 /**
  *
@@ -24,6 +25,17 @@ public class ControladorProva {
     private Prova selected = null;
     private final RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
     private ProvaBuilder builder = new ProvaBuilder();
+    
+    private ControladorResposta resposta = new ControladorResposta();
+
+    public ControladorResposta getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(ControladorResposta resposta) {
+        this.resposta = resposta;
+    }
+    
     
     public ControladorProva() {
     }
@@ -107,6 +119,9 @@ public class ControladorProva {
     }
     
     public String responder(){
+        resposta = new ControladorResposta(selected);
         return "ResponderProva.xhtml";
+        
     }
+   
 }

@@ -65,8 +65,13 @@ public class QuestaoBuilder {
         this.tamanhoEspaco = tamanhoEspaço;
     }
     
-    public Questao construir() {
-        return new Questao(id,enunciado,pontuacao,tamanhoEspaco);
+    public Questao construir(){
+        Questao novaQuestao = new Questao(id,enunciado,pontuacao, tamanhoEspaco);
+        for(AlternativaBuilder q : this.alternativas){
+            novaQuestao.adicionarAlternativa(q.construir());
+        }
+        return novaQuestao;
+        
     }
     
     public List<AlternativaBuilder> getAlternativas() {

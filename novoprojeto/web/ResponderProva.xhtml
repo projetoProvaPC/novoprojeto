@@ -4,17 +4,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <h:form id="FormResponder">
-            <h:outputText value="#{controladorProva.selected.titulo}"/>
-            <c:forEach var="questao" items="#{controladorProva.selected.questoes}">
-                <h:outputText value="#{questao.enunciado}"/>
-                <h:outputText value="#{questao.pontuacao}"/>
-            </c:forEach>
+
+            <h:outputText value="#{controladorProva.resposta.prova.titulo}"/><br></br>
+            <p:repeat var="questao" value="#{controladorProva.resposta.prova.questoes}" offset="0" size="#{controladorProva.resposta.prova.questoes.size()}" step="1" varStatus="questoesStatus">
+                <h:outputText value="#{questao.enunciado}"/><br></br>
+                <h:outputText value="#{questao.pontuacao}"/><br></br>
+                <p:selectOneRadio id="alternativa" layout="grid" columns="1" value="#{controladorProva.resposta.respostas.get(questao).escolhida}">
+                    <f:selectItems value="#{questao.alternativas}" var="a" itemLabel="#{alternativa.texto}" itemValue="#{alternativa}"/>
+                </p:selectOneRadio>
+            </p:repeat>
+            <p:commandButton value="Enviar Prova" action="#{controladorProva.resposta.salvar()}" />
+
         </h:form>
     </h:body>
 </html>
