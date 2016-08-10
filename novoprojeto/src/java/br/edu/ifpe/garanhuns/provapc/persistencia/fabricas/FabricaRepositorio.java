@@ -16,6 +16,7 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioAluno;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProfessor;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioQuestao;
+import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioRespostaProva;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioUsuario;
 
 /**
@@ -34,6 +35,7 @@ public abstract class FabricaRepositorio {
     private RepositorioProfessor professores = null;
     private RepositorioAluno alunos = null;
     private RepositorioUsuario usuarios = null;
+    private RepositorioRespostaProva respostaProva = null;
     
     /**
      * Isso vai lhe dar uma Fábrica de Repositórios.
@@ -97,6 +99,12 @@ public abstract class FabricaRepositorio {
         return usuarios;
     }
     
+     public final RepositorioRespostaProva getRepositorioRespostaProva(){
+         if(respostaProva==null){
+             respostaProva = newRepositorioRespostaProva();             
+         }
+         return respostaProva;
+     }
     // Métodos abstratos (protegidos)
     /**
      * Retorna um repositório para provas novo
@@ -128,6 +136,8 @@ public abstract class FabricaRepositorio {
      * @return repostório usuario
      */
     public abstract RepositorioUsuario newRepositorioUsuario();
+    
+    public abstract RepositorioRespostaProva newRepositorioRespostaProva();
     
     /**
      * Retorna um repositório para a classe desejada.

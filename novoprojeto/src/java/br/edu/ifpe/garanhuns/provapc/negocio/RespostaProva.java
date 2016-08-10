@@ -9,10 +9,11 @@ import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.MapKeyClass;
 import javax.persistence.OneToMany;
@@ -29,7 +30,7 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+    @ManyToOne (cascade = CascadeType.ALL, targetEntity = Prova.class, fetch = FetchType.EAGER)
     private Prova prova;
 
     @MapKey
@@ -85,7 +86,5 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     public void setProva(Prova prova) {
         this.prova = prova;
     }
-    
-    
     
 }

@@ -9,7 +9,7 @@ import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
 import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
 import br.edu.ifpe.garanhuns.provapc.negocio.RespostaProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.RespostaQuestao;
-import br.edu.ifpe.garanhuns.provapc.persistencia.implementacoes.RepositorioRespostaProvaBD;
+import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class ControladorResposta {
         for(RespostaQuestao q : respostas.values()){
             respostaProva.adicionar(q);
         }
-       new RepositorioRespostaProvaBD().adicionar(respostaProva);
+        FabricaRepositorio.getFabrica().getRepositorioRespostaProva().adicionar(respostaProva);
         return "CrudProva.xhtml";
     }
      
