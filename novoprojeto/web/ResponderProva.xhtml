@@ -11,16 +11,14 @@
     </h:head>
     <h:body>
         <h:form id="FormResponder">
-
             <h:outputText value="#{controladorProva.resposta.prova.titulo}"/><br></br>
-<<<<<<< HEAD
             <p:repeat var="respostaQuestao" value="#{controladorProva.resposta.respostas}" offset="0" size="#{controladorProva.resposta.respostas.size()}" step="1" varStatus="questoesStatus">
                 <h:outputText value="#{respostaQuestao.questao.enunciado}"/><br></br>
                 <h:outputText value="#{respostaQuestao.questao.pontuacao}"/><br></br>
-                <p:selectOneRadio value="#{respostaQuestao.escolhida}">
+                <p:selectOneRadio value="#{respostaQuestao.escolhida}" disabled="false">
                     <f:selectItems value="#{respostaQuestao.questao.getAlternativas()}" />
                 </p:selectOneRadio>
-                
+
                 <h:outputText value="#{respostaQuestao.escolhida}"/>
             </p:repeat>
             <p:commandButton type="submit" value="Enviar Prova" action="#{controladorProva.resposta.salvar()}" process="@this"/>
