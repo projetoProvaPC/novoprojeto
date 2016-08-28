@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
