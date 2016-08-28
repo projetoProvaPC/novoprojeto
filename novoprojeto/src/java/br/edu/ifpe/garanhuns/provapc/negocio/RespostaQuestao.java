@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
-
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,12 +23,13 @@ public class RespostaQuestao {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Questao.class)
     private Questao questao;
     //@MapKey
    // @MapKeyClass(Alternativa.class)
    // @OneToMany(cascade = CascadeType.ALL)
    // private final Map<Alternativa,RespostaAlternativa> respostas;
+    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Alternativa.class)
     private Alternativa escolhida;
 
     public Questao getQuestao() {

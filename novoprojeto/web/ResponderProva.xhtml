@@ -20,7 +20,7 @@
                     <f:selectItems value="#{questao.alternativas}" var="a" itemLabel="#{alternativa.texto}" itemValue="#{alternativa}"  />
                 </p:selectOneRadio>
             </p:repeat>
-            <p:commandButton value="Enviar Prova" action="#{controladorProva.resposta.salvar()}" />
+            <p:commandButton type="submit" value="Enviar Prova" action="#{controladorProva.resposta.salvar()}" process="@this"/>
 
         </h:form>
     </h:body>

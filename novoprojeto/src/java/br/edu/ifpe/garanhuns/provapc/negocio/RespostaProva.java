@@ -6,14 +6,14 @@
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.MapKeyClass;
 import javax.persistence.OneToMany;
@@ -30,13 +30,17 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+    @ManyToOne (cascade = CascadeType.ALL, targetEntity = Prova.class, fetch = FetchType.EAGER)
     private Prova prova;
 
     @MapKey
     @MapKeyClass(Questao.class)
     @OneToMany(cascade = CascadeType.ALL)
     private final Map<Questao, RespostaQuestao> respostas;
+
+    public RespostaProva() {
+        this.respostas = new HashMap<>();
+    }
 
     public RespostaProva(long id, Prova prova) {
         this.id = id;
@@ -45,7 +49,8 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     }
 
     public RespostaProva(Prova prova) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this();
+        this.prova = prova;
     }
 
     public double calculaPontuaçao() {
@@ -73,4 +78,13 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     public RespostaProva copiar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Prova getProva() {
+        return prova;
+    }
+
+    public void setProva(Prova prova) {
+        this.prova = prova;
+    }
+    
 }
