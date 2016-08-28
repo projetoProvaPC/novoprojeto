@@ -10,8 +10,8 @@ import br.edu.ifpe.garanhuns.provapc.negocio.Questao;
 import br.edu.ifpe.garanhuns.provapc.negocio.RespostaProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.RespostaQuestao;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -20,18 +20,20 @@ import java.util.Map;
 public class ControladorResposta {
     private Prova prova;
     
-    private final Map<Questao, RespostaQuestao> respostas;
+    private final List<RespostaQuestao> respostas;
+    //private final Map<Questao, RespostaQuestao> respostas;
 
     public ControladorResposta() {
-        this.respostas = new HashMap<>();
-        respostas.put(new Questao(), new RespostaQuestao());
+        this.respostas = new LinkedList<>();
     }
 
     ControladorResposta(Prova selected) {
        this();
-       setProva(selected);
+       //setProva(selected);
+       prova = selected;
        for(Questao q: prova.getQuestoes()){
-           respostas.put(q, new RespostaQuestao(q));
+           //respostas.put(q, new RespostaQuestao(q));
+           respostas.add(new RespostaQuestao(q));
        }
     }
 
@@ -44,13 +46,13 @@ public class ControladorResposta {
         
     }
 
-    public Map<Questao, RespostaQuestao> getRespostas() {
+    public List<RespostaQuestao> getRespostas() {
         return respostas;
     }
     
     public String salvar(){
         RespostaProva respostaProva = new RespostaProva(prova);
-        for(RespostaQuestao q : respostas.values()){
+        for(RespostaQuestao q : respostas){
             respostaProva.adicionar(q);
         }
         FabricaRepositorio.getFabrica().getRepositorioRespostaProva().adicionar(respostaProva);
