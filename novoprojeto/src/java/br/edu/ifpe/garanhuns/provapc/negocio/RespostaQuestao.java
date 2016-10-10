@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.garanhuns.provapc.negocio;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -69,6 +70,6 @@ public class RespostaQuestao {
     public void setId(long id) {
         this.id = id;
     }
-   
+  
     
 }

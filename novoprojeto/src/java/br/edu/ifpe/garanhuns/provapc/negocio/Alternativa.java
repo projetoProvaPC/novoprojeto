@@ -74,6 +74,7 @@ public class Alternativa implements Persistivel<Alternativa>{
     public void setId(long id) {
         this.id = id;
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

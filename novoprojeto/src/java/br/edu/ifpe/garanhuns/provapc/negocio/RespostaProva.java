@@ -6,7 +6,11 @@
 package br.edu.ifpe.garanhuns.provapc.negocio;
 
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.Persistivel;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -37,7 +41,7 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     @MapKeyClass(Questao.class)
     @OneToMany(cascade = CascadeType.ALL)
     private final Map<Questao, RespostaQuestao> respostas;
-
+  
     public RespostaProva() {
         this.respostas = new HashMap<>();
     }
@@ -86,5 +90,7 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     public void setProva(Prova prova) {
         this.prova = prova;
     }
-    
+     public List<RespostaQuestao> recuperaQuestao(){
+        return new LinkedList<>(this.respostas.values());
+    }
 }

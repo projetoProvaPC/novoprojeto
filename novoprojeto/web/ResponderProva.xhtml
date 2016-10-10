@@ -15,8 +15,8 @@
             <p:repeat var="respostaQuestao" value="#{controladorProva.resposta.respostas}" offset="0" size="#{controladorProva.resposta.respostas.size()}" step="1" varStatus="questoesStatus">
                 <h:outputText value="#{respostaQuestao.questao.enunciado}"/><br></br>
                 <h:outputText value="#{respostaQuestao.questao.pontuacao}"/><br></br>
-                <p:selectOneRadio value="#{respostaQuestao.escolhida}" disabled="false">
-                    <f:selectItems value="#{respostaQuestao.questao.getAlternativas()}" />
+                <p:selectOneRadio value="#{respostaQuestao.escolhida}" valueChangeListener="#{ControladorResposta.salvaEscolhida}">
+                    <f:selectItems value="#{respostaQuestao.questao.getAlternativas()}" var="item" itemValue="#{item}" />
                 </p:selectOneRadio>
 
                 <h:outputText value="#{respostaQuestao.escolhida}"/>
