@@ -116,5 +116,5 @@ public class Alternativa implements Persistivel<Alternativa>{
         return new Alternativa(texto, veracidade);
     }
     
- 
+        
 }

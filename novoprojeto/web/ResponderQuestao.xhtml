@@ -19,7 +19,8 @@
                 </p:selectOneRadio>
                 <f:facet name="footer">
                     <p:commandButton type="submit" value="Finalizar Prova" action="#{controladorRespostaQuestao.salvarProva()}"/>
-                    <p:commandButton type="submit" value="Próxima Questão" action="#{controladorRespostaQuestao.proximo()}" update="FormRespondeQuestao gro"/>
+                    <p:commandButton type="submit" value="Próxima Questão" action="#{controladorRespostaQuestao.proximo()}" update="FormRespondeQuestao gro" disabled="#{controladorRespostaQuestao.desativar()}"/>
+                    <p:commandButton type="submit" value="Voltar Questão" action="#{controladorRespostaQuestao.voltar()}" update="FormRespondeQuestao gro"/>
                 </f:facet>
 
 

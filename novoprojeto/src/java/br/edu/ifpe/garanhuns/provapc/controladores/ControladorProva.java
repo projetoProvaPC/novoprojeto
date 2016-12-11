@@ -6,7 +6,10 @@
 package br.edu.ifpe.garanhuns.provapc.controladores;
 
 import br.edu.ifpe.garanhuns.provapc.construtores.ProvaBuilder;
+import br.edu.ifpe.garanhuns.provapc.negocio.Aluno;
 import br.edu.ifpe.garanhuns.provapc.negocio.Prova;
+import br.edu.ifpe.garanhuns.provapc.negocio.RespostaProva;
+import br.edu.ifpe.garanhuns.provapc.persistencia.dao.DaoManagerHiber;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
 import br.edu.ifpe.garanhuns.provapc.persistencia.interfaces.RepositorioProva;
 import java.util.List;
@@ -25,7 +28,6 @@ public class ControladorProva {
     private Prova selected = null;
     private final RepositorioProva repositorio = FabricaRepositorio.getFabrica().getRepositorioProva();
     private ProvaBuilder builder = new ProvaBuilder();
-    
     private ControladorResposta resposta = new ControladorResposta();
 
     public ControladorResposta getResposta() {
@@ -122,6 +124,10 @@ public class ControladorProva {
         resposta = new ControladorResposta(selected);
         return "ResponderProva.xhtml";
         
+    }
+    
+    public String retornaPag(){
+        return "ResponderQuestao.xhtml";
     }
    
 }

@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,22 +35,36 @@ public class RespostaProva implements Persistivel<RespostaProva> {
     @Id
     @GeneratedValue
     private long id;
+    
     @ManyToOne (cascade = CascadeType.ALL, targetEntity = Prova.class, fetch = FetchType.EAGER)
     private Prova prova;
-
+    
+    @Column(name="nomealuno")
+    private String nomeAluno;
+    
     @MapKey
     @MapKeyClass(Questao.class)
     @OneToMany(cascade = CascadeType.ALL)
     private final Map<Questao, RespostaQuestao> respostas;
+
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
+    }
   
+    
     public RespostaProva() {
         this.respostas = new HashMap<>();
     }
 
-    public RespostaProva(long id, Prova prova) {
+    public RespostaProva(long id, Prova prova, String nomeAluno) {
         this.id = id;
         this.prova = prova;
         this.respostas = new HashMap<>();
+        this.nomeAluno = nomeAluno;
     }
 
     public RespostaProva(Prova prova) {
@@ -93,4 +108,12 @@ public class RespostaProva implements Persistivel<RespostaProva> {
      public List<RespostaQuestao> recuperaQuestao(){
         return new LinkedList<>(this.respostas.values());
     }
+     
+     public double resultado(){
+         double soma = 0;
+         for(RespostaQuestao rq : this.respostas.values()) {
+             soma += rq.calcularPontuacao();
+         }
+         return soma;
+     }
 }

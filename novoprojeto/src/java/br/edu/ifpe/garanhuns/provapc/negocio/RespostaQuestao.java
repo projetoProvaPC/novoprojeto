@@ -6,6 +6,7 @@
 package br.edu.ifpe.garanhuns.provapc.negocio;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -59,8 +60,8 @@ public class RespostaQuestao {
     
     }
     
-    public double calcularPontuaçao(){
-        return 1;
+    public double calcularPontuacao(){
+        return escolhida.isVeracidade() ? questao.getPontuacao() : 0;
     }
 
     public long getId() {
@@ -71,5 +72,4 @@ public class RespostaQuestao {
         this.id = id;
     }
   
-    
 }

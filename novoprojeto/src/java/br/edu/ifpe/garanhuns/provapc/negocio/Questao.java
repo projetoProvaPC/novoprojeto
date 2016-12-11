@@ -162,6 +162,7 @@ public class Questao implements Persistivel<Questao> {
     public void setAlternativas(List<Alternativa> alternativas) {
         this.alternativas = alternativas;
     }
+   
     
 }
             

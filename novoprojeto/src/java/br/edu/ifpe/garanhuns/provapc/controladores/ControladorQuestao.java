@@ -74,5 +74,4 @@ public class ControladorQuestao {
     public void setAlterando(Questao alterando) {
         this.alterando = alterando;
     }
-   
 }

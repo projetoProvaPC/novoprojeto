@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/provapc2</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/provapc1</property>
     <property name="hibernate.connection.username">projetoprovapc</property>
     <property name="hibernate.connection.password">senhappp</property>
-    
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Prova"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Questao"/>
     <mapping class="br.edu.ifpe.garanhuns.provapc.negocio.Alternativa"/>

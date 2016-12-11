@@ -12,9 +12,9 @@ import br.edu.ifpe.garanhuns.provapc.negocio.RespostaProva;
 import br.edu.ifpe.garanhuns.provapc.negocio.RespostaQuestao;
 import br.edu.ifpe.garanhuns.provapc.persistencia.fabricas.FabricaRepositorio;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,7 +30,16 @@ public class ControladorRespostaQuestao {
     private RespostaProva respostaProva;
     private RespostaQuestao respostaQuestao;
     private String altEscolhida;
-    private Iterator<RespostaQuestao> itr;
+    private ListIterator<RespostaQuestao> itr;
+    private String nomeAluno;
+
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
+    }
 
     List<Alternativa> alternativas = new LinkedList<>();
     List<String> strings = new LinkedList<>();
@@ -45,10 +54,11 @@ public class ControladorRespostaQuestao {
         for (Questao q : prova.getQuestoes()) {
             respostaProva.adicionar(new RespostaQuestao(q));
         }
-        itr = respostaProva.recuperaQuestao().iterator();
-        respostaQuestao = itr.next();
-
-        return "ResponderQuestao.xhtml";
+        itr = respostaProva.recuperaQuestao().listIterator();
+        this.proximo();
+        
+        return "LoginAluno.xhtml";
+        //return "ResponderQuestao.xhtml";
     }
 
     public RespostaProva getRespostaProva() {
@@ -76,30 +86,76 @@ public class ControladorRespostaQuestao {
     }
 
     public void proximo() {
+        if(this.respostaQuestao != null){
         this.respostaQuestao.setEscolhida(mapa.get(altEscolhida));
+        }
         if (itr.hasNext()) {
             respostaQuestao = itr.next();
-            altEscolhida = respostaQuestao.getEscolhida().toString();
-            for (Alternativa o : alternativas) {
+            if (respostaQuestao.getEscolhida() == null) {
+                altEscolhida = null;
+            } else {
+                altEscolhida = respostaQuestao.getEscolhida().toString();
+            }
+            mapa.clear();
+            strings.clear();
+            for (Alternativa o : this.respostaQuestao.getQuestao().getAlternativas()) {
                 String convertida = o.toString();
                 mapa.put(convertida, o);
                 strings.add(o.toString());
             }
-
-            // desconverter
-            Object o = mapa.get("string");
         }
 
+    }
+     public boolean desativar(){
+        return !itr.hasNext();
     }
 
     public List<String> getAlternativasString() {
         return strings;
     }
-
+    
+    public void voltar(){
+        if(this.respostaQuestao != null){
+        this.respostaQuestao.setEscolhida(mapa.get(altEscolhida));
+        }
+        if (itr.hasPrevious()) {
+            respostaQuestao = itr.previous();
+            if (respostaQuestao.getEscolhida() == null) {
+                altEscolhida = null;
+            } else {
+                altEscolhida = respostaQuestao.getEscolhida().toString();
+            }
+            mapa.clear();
+            strings.clear();
+            for (Alternativa o : this.respostaQuestao.getQuestao().getAlternativas()) {
+                String convertida = o.toString();
+                mapa.put(convertida, o);
+                strings.add(o.toString());
+            }
+        }
+    }
+    
+   // public boolean isDesabilitarBotao(){
+       // if(itr.hasNext()){
+        //    return false;
+      //  }  
+      //  return true;
+   // }
+    
+   // public String comecarProva(){
+       // respostaProva.setNomeAluno(nomeAluno);
+        
+      //  return "RespostaQuestao.xhtml";
+    //}
     public String salvarProva() {
         proximo();
         FabricaRepositorio.getFabrica().getRepositorioRespostaProva().adicionar(respostaProva);
-        return "CrudProva.xhtml";
+        return "Pontuacao.xhtml";
+    }
+    
+    public String comecar() {
+        respostaProva.setNomeAluno(nomeAluno);
+        return "ResponderQuestao.xhtml";
     }
 
 }
