@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showSummary="true" showDetail="true"/>
+        <h:form id="FormRespondeQuestao">
+            <p:panel id="titulo" header="#{controladorRespostaQuestao.respostaProva.prova.titulo}" footer="" style="margin-bottom:20px">
+                <h:outputText value="#{controladorRespostaQuestao.respostaQuestao.questao.enunciado}"/>
+                <p:selectOneRadio  value="#{controladorRespostaQuestao.altEscolhida}" required="false" >
+                    <f:selectItems value="#{controladorRespostaQuestao.alternativasString}" />
+
+
+                </p:selectOneRadio>
+                <f:facet name="footer">
+                    <p:commandButton type="submit" value="Finalizar Prova" action="#{controladorRespostaQuestao.salvarProva()}"/>
+                    <p:commandButton type="submit" value="Próxima Questão" action="#{controladorRespostaQuestao.proximo()}" update="FormRespondeQuestao gro" disabled="#{controladorRespostaQuestao.desativar()}"/>
+                    <p:commandButton type="submit" value="Voltar Questão" action="#{controladorRespostaQuestao.voltar()}" update="FormRespondeQuestao gro"/>
+                </f:facet>
+
+
+            </p:panel>  
+        </h:form>
+
+    </h:body>
+</html>
+

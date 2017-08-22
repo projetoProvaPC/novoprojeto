@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="FormResponder">
+            <h:outputText value="#{controladorProva.resposta.prova.titulo}"/><br></br>
+            <p:repeat var="respostaQuestao" value="#{controladorProva.resposta.respostas}" offset="0" size="#{controladorProva.resposta.respostas.size()}" step="1" varStatus="questoesStatus">
+                <h:outputText value="#{respostaQuestao.questao.enunciado}"/><br></br>
+                <h:outputText value="#{respostaQuestao.questao.pontuacao}"/><br></br>
+                <p:selectOneRadio value="#{respostaQuestao.escolhida}" valueChangeListener="#{ControladorResposta.salvaEscolhida}">
+                    <f:selectItems value="#{respostaQuestao.questao.getAlternativas()}" var="item" itemValue="#{item}" />
+                </p:selectOneRadio>
+
+                <h:outputText value="#{respostaQuestao.escolhida}"/>
+            </p:repeat>
+            <p:commandButton type="submit" value="Enviar Prova" action="#{controladorProva.resposta.salvar()}" process="@this"/>
+
+        </h:form>
+    </h:body>
+</html>
+
